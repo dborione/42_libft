@@ -12,39 +12,40 @@
 
 //#include <stdlib.h>
 //#include <stdio.h>
-//#include <limits.h>
+//#include <ctype.h>
+#include "libft.h"
 
 int	ft_atoi(char *str)
 {
 	unsigned int	i;
-	unsigned int	nbr;
+	unsigned long	res;
 	unsigned int	count;
 
 	i = 0;
-	nbr = 0;
+	res = 0;
 	count = 0;
-	while (str[i] == '\t' || str[i] == '\n'
+	while (str[i] == '\t' || str[i] == '\n' || str[i] == '\r'
 		|| str[i] == '\v' || str[i] == '\f' || str[i] == ' ')
 		i++;
-	while (str[i] == '-' || str[i] == '+')
+	while ((str[i] == '+' || str[i] == '-') && ft_isdigit(str[i + 1]))
 	{
 		if (str[i] == '-')
 			count++;
 		i++;
 	}	
-	while (str[i] >= '0' && str[i] <= '9')
+	while (ft_isdigit(str[i]))
 	{
-		nbr = nbr * 10 + (str[i] - '0');
+		res = res * 10 + (str[i] - '0');
 		i++;
 	}
 	if (count % 2 != 0)
-		return (-nbr);
+		return (-res);
 	else
-		return (nbr);
+		return (res);
 }
 
 /*int	main(void)
 {
-	printf("%d\n", ft_atoi("+-47+5"));
+	printf("%d\n", atoi("-2147483647432"));
 	return (0);
 }*/
