@@ -10,45 +10,41 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRCS	= ft_isalpha.c \
-			ft_isdigit.c \
-			ft_isalnum.c \
-			ft_isascii.c \
-			ft_isprint.c \
-			ft_strlen.c \
-			ft_strlcpy.c \
-			ft_strlcat.c \
-			ft_toupper.c \
-			ft_tolower.c \
-			ft_strchr.c \
-			ft_strrchr.c \
-			ft_strncmp.c \
-			ft_strnstr.c \
-			ft_atoi.c
+#	Compiler
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror
 
-OBJS	= ${SRCS:.c=.o}
+#	Sources
+SRCS := $(shell find . -name '*.c')
 
-NAME	= libft.a
+#	Objects
+OBJS = $(SRCS:.c=.o)
 
-CC	= gcc
+NAME = libft.a
+RM = rm -f
 
-CFLAGS	= -Wall -Wextra -Werror
-
-RM	= rm -f
+#	Targets
+all :	$(NAME)
 
 .c.o:
-	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+#	@echo "\033[34mBuilding...\033[0m"
+	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
 
-${NAME}:	${OBJS}
-		ar rcs ${NAME} ${OBJS}
-all :	${NAME}
+$(NAME): $(OBJS)
+	ar rcs $(NAME) $(OBJS)
+	@echo "\033[32m[	Done!	]\033[0m"
 
+#	Cleaning
 clean:
-	${RM} ${OBJS}
+	@echo "\033[33m[	Cleaning...	]\033[0m"
+	$(RM) $(OBJS)
+	@echo "\033[31m[	Objects Cleaned!	]\033[0m"
 
-fclean:	clean
-	${RM} ${NAME}
 
-re:	fclean all
+fclean: clean
+	$(RM) $(NAME)
+	@echo "\033[31m[	Executable Cleaned!	]\033[0m"
 
-.PHONY:	all clean fclean re
+re: fclean all
+
+.PHONY:	clean fclean re all

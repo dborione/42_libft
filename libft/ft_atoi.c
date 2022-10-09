@@ -15,7 +15,7 @@
 //#include <ctype.h>
 #include "libft.h"
 
-int	ft_atoi(char *str)
+int	ft_atoi(const char *str)
 {
 	unsigned int	i;
 	unsigned long	res;
