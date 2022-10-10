@@ -1,42 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dborione <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/10 10:11:45 by dborione          #+#    #+#             */
-/*   Updated: 2022/10/10 10:29:42 by dborione         ###   ########.fr       */
+/*   Created: 2022/10/10 15:51:51 by dborione          #+#    #+#             */
+/*   Updated: 2022/10/10 16:20:17 by dborione         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <stdio.h>
-//#include <string.h>
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+void	*ft_calloc(size_t count, size_t size)
 {
-	size_t			i;
-	unsigned char	*s2;
+	int	*ptr;
 
-	i = 0;
-	s2 = (unsigned char *)s;
-	while (i < n)
-	{
-		s2[i] = '\0';
-		i++;
-	}
+	ptr = malloc(size * count);
+	return (ptr);
 }
 
-/*int		main()
+/*int	main()
 {
-	char	str1[]= "exemple";
-	char	str2[]= "exemple";
-
-	bzero(str1, 2*sizeof(char));
-	printf("%s\n", str1);
-	ft_bzero(str2, 2*sizeof(char));
-	printf("%s\n", str2);
-
-	return(0);
+	int	size = 8539;
+	ft_calloc(size, sizeof(int));
+	return (0);
 }*/

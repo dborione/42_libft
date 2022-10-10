@@ -6,7 +6,7 @@
 /*   By: dborione <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 10:29:59 by dborione          #+#    #+#             */
-/*   Updated: 2022/10/07 16:42:29 by dborione         ###   ########.fr       */
+/*   Updated: 2022/10/10 16:07:10 by dborione         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,17 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 
 /*int	main()
 {
-	char src[] = "n\0AA";
-	char dst[] = "AAAAAAAAAAAAAAAA";
+//	char *src = "lorem";
+	char *dst;
 
-	printf("%lu\n", ft_strlcat(dst, src, sizeof(dst)));
-	printf("%s", dst);
-//printf("%lu\n", ft_strlcat(NULL, src, 0));
+	dst[11] = 'a';
+//	printf("%lu\n", sizeof(dst));
+//	printf("%lu\n", ft_strlen(src));
+
+	printf("%lu\n", strlcat(dst, "loremop", 15));
+//	printf("%lu\n", strlcat(dst, src, 15));
+//	printf("%s", dst);
+//	printf("%lu\n", ft_strlcat(NULL, src, 0));
 
 	return (0);
 }*/

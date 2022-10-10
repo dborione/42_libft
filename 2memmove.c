@@ -6,61 +6,56 @@
 /*   By: dborione <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 10:22:24 by dborione          #+#    #+#             */
-/*   Updated: 2022/10/10 17:40:27 by dborione         ###   ########.fr       */
+/*   Updated: 2022/10/10 14:21:20 by dborione         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <stdio.h>
-//#include <string.h>
+#include <stdio.h>
+#include <string.h>
 #include "libft.h"
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	unsigned char	*dest2;
-	unsigned char	*src2;
 	size_t			i;
+	unsigned char	*dest2;
+//	const char	*src2;
+	void	*tmp = NULL;
 
-	dest2 = (unsigned char *)dest;
-	src2 = (unsigned char *)src;
 	i = 0;
-	if (dest2 == NULL && src2 == NULL)
-		return (0);
-	if (dest2 > src2)
-	{
-		while (n > 0)
-		{
-			n--;
-			dest2[n] = src2[n];
-		}
-	}
-	while (i < n)
-	{
-		dest2[i] = src2[i];
+	dest2 = (unsigned char *)dest;
+//	src2 = (const char *)src;
+//	tmp = src2;
+	memcpy(tmp, src, n);
+	printf("%s", tmp);
+/*	while (i < n)
+	{	
+		dest2[i] = tmp[i];
 		i++;
-	}
-	return (dest);
+	}*/
+//	memcpy(dest2, tmp, n);
+	return (dest2);
 }
 
-/*int		main()
+int		main()
 {
 	char	src1[] = "lorem ipsum dolor sit amet";
-	char	*dest1;
+/*	char	*dest1;
 
 	dest1 = src1 + 1;
 
 	char	src2[] = "lorem ipsum dolor sit amet";
 	char	*dest2;
 
-	dest2 = src2 + 1;
+	dest2 = src2 + 1;*/
 
 	memmove(NULL, NULL, 8);
-	printf("src1=%s\n", src1);
-	printf("dest1=%s\n", dest1);
+	//printf("src1=%s\n", src1);
+	//printf("dest1=%s\n", dest1);
 
-	ft_memmove(NULL, NULL, 8);
-	printf("src2=%s\n", src2);
-	printf("dest2=%s\n", dest2);
+	ft_memmove(NULL, src1, 8);
+	//printf("src2=%s\n", src2);
+	//printf("dest2=%s\n", dest2);
 
 
 	return(0);
-}*/
+}

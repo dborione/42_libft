@@ -6,7 +6,7 @@
 /*   By: dborione <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 11:20:17 by dborione          #+#    #+#             */
-/*   Updated: 2022/10/07 12:04:31 by dborione         ###   ########.fr       */
+/*   Updated: 2022/10/10 12:24:39 by dborione         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*ft_strchr(const char *s, int c)
 	while (s[i] != c)
 	{
 		i++;
-		if (i == (strlen(s) + 1))
+		if (i == (ft_strlen(s) + 1))
 			return (0);
 	}
 	return ((char *)&s[i]);

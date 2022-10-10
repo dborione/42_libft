@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dborione <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/10 10:11:45 by dborione          #+#    #+#             */
-/*   Updated: 2022/10/10 10:29:42 by dborione         ###   ########.fr       */
+/*   Created: 2022/10/10 11:20:48 by dborione          #+#    #+#             */
+/*   Updated: 2022/10/10 11:43:14 by dborione         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,31 @@
 //#include <string.h>
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	size_t			i;
-	unsigned char	*s2;
+	unsigned int		i;
+	unsigned char		*cast_s1;
+	unsigned char		*cast_s2;
 
 	i = 0;
-	s2 = (unsigned char *)s;
+	cast_s1 = (unsigned char *)s1;
+	cast_s2 = (unsigned char *)s2;
 	while (i < n)
 	{
-		s2[i] = '\0';
+		if (cast_s2[i] != cast_s1[i])
+			return (cast_s1[i] - cast_s2[i]);
 		i++;
 	}
+	return (0);
 }
 
-/*int		main()
+/*int	main()
 {
-	char	str1[]= "exemple";
-	char	str2[]= "exemple";
-
-	bzero(str1, 2*sizeof(char));
-	printf("%s\n", str1);
-	ft_bzero(str2, 2*sizeof(char));
-	printf("%s\n", str2);
-
-	return(0);
+//	char s1[] = "\200";
+//	char s2[] = "\0";
+	char s1[] = {0, 0, 127, 0};
+	char s2[] = {0, 0, 42, 0};
+	printf("%d\n", memcmp(s1, s2, 6));
+	printf("%d\n", ft_memcmp(s1, s2, 6));
+	return (0);
 }*/

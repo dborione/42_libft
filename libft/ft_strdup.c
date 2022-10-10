@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dborione <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/10 10:11:45 by dborione          #+#    #+#             */
-/*   Updated: 2022/10/10 10:29:42 by dborione         ###   ########.fr       */
+/*   Created: 2022/10/10 16:34:04 by dborione          #+#    #+#             */
+/*   Updated: 2022/10/10 16:50:37 by dborione         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,24 @@
 //#include <string.h>
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+char	*ft_strdup(const char *s1)
 {
-	size_t			i;
-	unsigned char	*s2;
+	size_t	i;
+	char *s2;
 
 	i = 0;
-	s2 = (unsigned char *)s;
-	while (i < n)
-	{
-		s2[i] = '\0';
-		i++;
-	}
+	malloc(sizeof(char)*(sizeof(s1)+1));
+	s2 = (char *)s1;
+	return (s2);
 }
 
-/*int		main()
+/*int	main()
 {
-	char	str1[]= "exemple";
-	char	str2[]= "exemple";
+	char src1[11] = "an exemple\0";
+	char src2[11] = "an exemple\0";
 
-	bzero(str1, 2*sizeof(char));
-	printf("%s\n", str1);
-	ft_bzero(str2, 2*sizeof(char));
-	printf("%s\n", str2);
+	printf("%s\n", ft_strdup(src1));
+	printf("%s\n", strdup(src2));
 
-	return(0);
+	return (0);
 }*/

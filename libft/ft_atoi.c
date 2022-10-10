@@ -6,20 +6,21 @@
 /*   By: dborione <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 12:12:06 by dborione          #+#    #+#             */
-/*   Updated: 2022/10/07 17:25:27 by dborione         ###   ########.fr       */
+/*   Updated: 2022/10/10 17:37:12 by dborione         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //#include <stdlib.h>
 //#include <stdio.h>
 //#include <ctype.h>
+//#include <limits.h>
 #include "libft.h"
 
 int	ft_atoi(const char *str)
 {
-	unsigned int	i;
-	unsigned long	res;
-	unsigned int	count;
+	size_t	i;
+	size_t	res;
+	size_t	count;
 
 	i = 0;
 	res = 0;
@@ -46,6 +47,6 @@ int	ft_atoi(const char *str)
 
 /*int	main(void)
 {
-	printf("%d\n", atoi("-2147483647432"));
+	printf("%d\n", ft_atoi("INT_MAX"));
 	return (0);
 }*/
