@@ -32,11 +32,11 @@ all :	$(NAME)
 
 $(NAME): $(OBJS)
 	ar rcs $(NAME) $(OBJS)
-	@echo "\033[32m[	Done!	]\033[0m"
+	@echo "\033[32m[	Done!			]\033[0m"
 
 #	Cleaning
 clean:
-	@echo "\033[33m[	Cleaning...	]\033[0m"
+	@echo "\033[33m[	Cleaning...		]\033[0m"
 	$(RM) $(OBJS)
 	@echo "\033[31m[	Objects Cleaned!	]\033[0m"
 

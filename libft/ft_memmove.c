@@ -26,6 +26,12 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	if (((unsigned char *)dest) == (void *)0 
 		&& ((unsigned char *)src) == (void *)0 && n != 0)
 		return (0);
+/*	while (i < n)
+	{
+		tmp[i] = ((unsigned char *)src)[i];
+		i++;
+	}
+	i = 0;*/
 	while (i < n)
 	{
 		dest2[i] = tmp[i];
@@ -39,19 +45,25 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 {
 //	char	str1[]= "thi\xffs i\xfas \0a g\xde\xadood \0nyan\0cat\0 !\r\n";
 //	char	dest1[]= "exemple";
-	char s1[20]="alightechs";
+//	char s1[20]="alightechs";
 //	char	str2[]= "thi\xffs i\xfas \0a g\xde\xadood \0nyan\0cat\0 !\r\n";
 //	char	dest2[]= "exemple";
-	char s2[20]="alightechs";
+//	char s2[20]="alightechs";
+
+	char	src3[] = "lorem ipsum dolor sit amet";
+	char	*dest3;
+
+	dest3 = src3 + 1;
+
 
 //	printf("%zu\n", strlen(str1));
-	memmove(s1+5, s1, 7);
+	memmove(dest3, src3, 8);
 //	printf("dest1=%s\n", dest1);
-	printf("str1=%s\n", s1);
+	printf("str1=%s\n", src3);
 
-	memmove(s2+5, s2, 7);
+	ft_memmove(dest3, src3, 8);
 //	printf("dest2=%s\n", dest2);
-	printf("str2=%s\n", s2);
+	printf("str2=%s\n", src3);
 
 
 	return(0);

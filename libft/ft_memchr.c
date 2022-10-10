@@ -10,29 +10,32 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <stdio.h>
-//#include <string.h>
+#include <stdio.h>
+#include <string.h>
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	unsigned long	i;
+	size_t	i;
+//	const char *s2;
 
 	i = 0;
-	while (s[i] != c)
+//	s2 = (const char*)s;
+	while (i < n)
 	{
 		i++;
-		if (i == (strlen(s) + 1))
-			return (0);
+		if (((const char *)s)[i] == c)
+			return ((void *)s);
 	}
-	return ((char *)&s[i]);
+	return (0);
 }
 
-/*int	main()
+int	main()
 {
 	char *str = "dddd";
 //	int	c = 't';
 
-	printf("%s", strchr(str, 't' + 256));
+	memchr(str, 't' + 256, 3);
+	ft_memchr(str, 'd', 3);
 	return (0);
-}*/
+}
