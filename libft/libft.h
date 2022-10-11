@@ -6,7 +6,7 @@
 /*   By: dborione <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 13:47:55 by dborione          #+#    #+#             */
-/*   Updated: 2022/10/10 17:38:17 by dborione         ###   ########.fr       */
+/*   Updated: 2022/10/11 11:47:56 by dborione         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	ft_isascii(int c);
 int	ft_isprint(int c);
 
 void	*malloc(size_t size);
+void	free(void *ptr);
 void	*ft_calloc(size_t count, size_t size);
 char	*ft_strdup(const char *s1);
 void	*ft_memset(void *b, int c, size_t len);

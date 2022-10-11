@@ -6,21 +6,20 @@
 /*   By: dborione <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 12:12:06 by dborione          #+#    #+#             */
-/*   Updated: 2022/10/10 17:37:12 by dborione         ###   ########.fr       */
+/*   Updated: 2022/10/11 11:22:11 by dborione         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //#include <stdlib.h>
 //#include <stdio.h>
-//#include <ctype.h>
-//#include <limits.h>
+#include <limits.h>
 #include "libft.h"
 
 int	ft_atoi(const char *str)
 {
-	size_t	i;
-	size_t	res;
-	size_t	count;
+	long	i;
+	long	res;
+	int		count;
 
 	i = 0;
 	res = 0;
@@ -39,6 +38,8 @@ int	ft_atoi(const char *str)
 		res = res * 10 + (str[i] - '0');
 		i++;
 	}
+	if (res > LONG_MAX)
+		return (-1);
 	if (count % 2 != 0)
 		return (-res);
 	else
@@ -47,6 +48,9 @@ int	ft_atoi(const char *str)
 
 /*int	main(void)
 {
-	printf("%d\n", ft_atoi("INT_MAX"));
+	printf("%ld\n", LONG_MAX);
+	printf("%d\n", ft_atoi("99999999999999999999999999"));
+	printf("%d\n", atoi("99999999999999999999999999"));
+
 	return (0);
 }*/

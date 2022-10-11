@@ -6,7 +6,7 @@
 /*   By: dborione <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 15:51:51 by dborione          #+#    #+#             */
-/*   Updated: 2022/10/10 16:20:17 by dborione         ###   ########.fr       */
+/*   Updated: 2022/10/11 12:28:50 by dborione         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	*ft_calloc(size_t count, size_t size)
 	int	*ptr;
 
 	ptr = malloc(size * count);
+	if (ptr == NULL)
+		return (0);
 	return (ptr);
 }
 
