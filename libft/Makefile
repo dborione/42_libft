@@ -6,7 +6,7 @@
 #    By: cmartino <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/04 08:31:57 by cmartino          #+#    #+#              #
-#    Updated: 2022/10/07 13:11:13 by dborione         ###   ########.fr        #
+#    Updated: 2022/10/11 10:24:00 by dborione         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,13 +15,43 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
 #	Sources
-SRCS := $(shell find . -name '*.c')
+#	SRCS := $(shell find . -name '*.c')
+SRCS = ft_atoi.c		\
+		ft_bzero.c		\
+		ft_calloc.c		\
+		ft_memchr.c		\
+		ft_strdup.c		\
+		ft_strrchr.c	\
+		ft_isalnum.c	\
+		ft_memcmp.c		\
+		ft_strlcat.c	\
+		ft_tolower.c	\
+		ft_isalpha.c	\
+		ft_memcpy.c		\
+		ft_strlcpy.c	\
+		ft_toupper.c	\
+		ft_isascii.c	\
+		ft_memmove.c	\
+		ft_strlen.c		\
+		ft_isdigit.c	\
+		ft_memset.c		\
+		ft_strncmp.c	\
+		ft_isprint.c	\
+		ft_strchr.c		\
+		ft_strnstr.c	\
 
 #	Objects
 OBJS = $(SRCS:.c=.o)
 
+#	Others
 NAME = libft.a
 RM = rm -f
+
+#	Colours
+GREEN = \033[32m
+YELLOW = \033[33m
+RED = \033[31m
+DEFAULT = \033[0m
 
 #	Targets
 all :	$(NAME)
@@ -32,18 +62,18 @@ all :	$(NAME)
 
 $(NAME): $(OBJS)
 	ar rcs $(NAME) $(OBJS)
-	@echo "\033[32m[	Done!			]\033[0m"
+	@echo "$(GREEN)[Done!]$(DEFAULT)"
 
 #	Cleaning
 clean:
-	@echo "\033[33m[	Cleaning...		]\033[0m"
+	@echo "$(YELLOW)[Cleaning...]$(DEFAULT)"
 	$(RM) $(OBJS)
-	@echo "\033[31m[	Objects Cleaned!	]\033[0m"
+	@echo "$(RED)[Objects Cleaned!]$(DEAFULT)"
 
 
 fclean: clean
 	$(RM) $(NAME)
-	@echo "\033[31m[	Executable Cleaned!	]\033[0m"
+	@echo "$(RED)[Executable Cleaned!]$(DEFAULT)"
 
 re: fclean all
 
