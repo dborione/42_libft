@@ -6,20 +6,33 @@
 /*   By: dborione <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 12:12:06 by dborione          #+#    #+#             */
-/*   Updated: 2022/10/11 11:22:11 by dborione         ###   ########.fr       */
+/*   Updated: 2022/10/11 17:24:57 by dborione         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //#include <stdlib.h>
 //#include <stdio.h>
-#include <limits.h>
+//#include <limits.h>
 #include "libft.h"
+
+unsigned long	ft_over_limits(unsigned long res)
+{
+	unsigned long	long_max;
+
+	long_max = 9223372036854775807;
+	if (res > long_max)
+		return (-1);
+	else if (res < long_max + 1)
+		return (0);
+	else
+		return (res);
+}
 
 int	ft_atoi(const char *str)
 {
-	long	i;
-	long	res;
-	int		count;
+	int				i;
+	unsigned long	res;
+	int				count;
 
 	i = 0;
 	res = 0;
@@ -34,12 +47,8 @@ int	ft_atoi(const char *str)
 		i++;
 	}	
 	while (ft_isdigit(str[i]))
-	{
-		res = res * 10 + (str[i] - '0');
-		i++;
-	}
-	if (res > LONG_MAX)
-		return (-1);
+		res = res * 10 + (str[i++] - '0');
+	ft_over_limits(res);
 	if (count % 2 != 0)
 		return (-res);
 	else
@@ -48,9 +57,10 @@ int	ft_atoi(const char *str)
 
 /*int	main(void)
 {
-	printf("%ld\n", LONG_MAX);
-	printf("%d\n", ft_atoi("99999999999999999999999999"));
-	printf("%d\n", atoi("99999999999999999999999999"));
+	char over_lim[40] = "99999999999999999999999999";
+
+	printf("%d\n", ft_atoi(over_lim));
+	printf("%d\n", atoi(over_lim));
 
 	return (0);
 }*/

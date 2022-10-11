@@ -6,7 +6,7 @@
 /*   By: dborione <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 15:55:33 by dborione          #+#    #+#             */
-/*   Updated: 2022/10/07 16:20:55 by dborione         ###   ########.fr       */
+/*   Updated: 2022/10/11 16:46:21 by dborione         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_strrchr(char *str, int c)
 	len = ft_strlen(str);
 	while (len != -1)
 	{
-		if (str[len] == c)
+		if (str[len] == (unsigned char)c)
 			return (&str[len]);
 		len--;
 	}

@@ -6,7 +6,7 @@
 /*   By: dborione <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 11:20:17 by dborione          #+#    #+#             */
-/*   Updated: 2022/10/10 12:24:39 by dborione         ###   ########.fr       */
+/*   Updated: 2022/10/11 17:26:00 by dborione         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strchr(const char *s, int c)
 	unsigned long	i;
 
 	i = 0;
-	while (s[i] != c)
+	while (s[i] != (unsigned char)c)
 	{
 		i++;
 		if (i == (ft_strlen(s) + 1))
@@ -30,9 +30,10 @@ char	*ft_strchr(const char *s, int c)
 
 /*int	main()
 {
-	char *str = "dddd";
+//	char *str = "dddd";
 //	int	c = 't';
+	char s[] = "tripouille";
 
-	printf("%s", strchr(str, 't' + 256));
+	printf("%s", ft_strchr(s, 't'+ 256));
 	return (0);
 }*/
