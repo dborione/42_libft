@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <stdio.h>
-//#include <string.h>
+#include <stdio.h>
+#include <string.h>
 #include "libft.h"
 
 char	*ft_strnstr(char *haystack, char *needle, size_t len)
@@ -23,16 +23,16 @@ char	*ft_strnstr(char *haystack, char *needle, size_t len)
 	i = 0;
 	j = 0;
 	int_len = (int)len;
+	if (haystack == NULL && int_len == 0)
+		return (0);
 	if (!*needle)
 		return (haystack);
-//	if (haystack == (void *)0)
-//		return (0);
 	while (haystack[i] && i < int_len)
 	{
 		while (haystack[i + j] && (haystack[i + j] == needle[j]) && ((i + j) < int_len))
 		{
 			j++;
-			if (needle[i + j] == '\0')
+			if (needle[j] == '\0')
 			{
 				return (&haystack[i]);
 			}
@@ -45,7 +45,7 @@ char	*ft_strnstr(char *haystack, char *needle, size_t len)
 
 /*int	main()
 {
-char haystack[] = "ababac";
+	char haystack[] = "ababac";
 	char needle[] = "abac";
 //	char haystack2[] = "ababac";
 	char needle2[] = "abac";
@@ -56,7 +56,10 @@ char haystack[] = "ababac";
 //	char little2[] = "FF";
 //	char big2[] = "see FF see FF";
 //	printf("%s\n", strnstr(big, NULL, 0));
-	printf("%s\n", ft_strnstr("fake", NULL, 4));
+//	char haystack[30] = "aaabcabcd";
+//	char needle[10] = "aabc";
+//	char * empty = (char*)"";
+	printf("%s\n", strnstr("", "", 0));
 
 //	printf("%s\n", strnstr("lorem ipsum dolor sit amet", "dolor", 15));
 //	printf("%s\n", ft_strnstr("lorem ipsum dolor sit amet", "dolor", 15));

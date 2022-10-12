@@ -18,20 +18,21 @@
 unsigned long	ft_over_limits(unsigned long res)
 {
 	unsigned long	long_max;
+	unsigned long	long_min;
 
-	long_max = 9223372036854775807;
+	long_max = 9223372036854775807U;
+	long_min = -9223372036854775808U;
 	if (res > long_max)
 		return (-1);
-	else if (res < long_max + 1)
+	else if (res < long_min)
 		return (0);
-	else
-		return (res);
+	return (res);
 }
 
 int	ft_atoi(const char *str)
 {
 	int				i;
-	unsigned long	res;
+	unsigned long			res;
 	int				count;
 
 	i = 0;
@@ -49,15 +50,15 @@ int	ft_atoi(const char *str)
 	while (ft_isdigit(str[i]))
 		res = res * 10 + (str[i++] - '0');
 	ft_over_limits(res);
-	if (count % 2 != 0)
-		return (-res);
-	else
+	if (count % 2 == 0)
 		return (res);
+	else
+		return (-res);
 }
 
 /*int	main(void)
 {
-	char over_lim[40] = "99999999999999999999999999";
+	char over_lim[40] = "-99999999999999999999999999";
 
 	printf("%d\n", ft_atoi(over_lim));
 	printf("%d\n", atoi(over_lim));
