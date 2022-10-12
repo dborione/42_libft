@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
+//#include <stdio.h>
+//#include <string.h>
 #include "libft.h"
 
 char	*ft_strnstr(char *haystack, char *needle, size_t len)
@@ -23,6 +23,8 @@ char	*ft_strnstr(char *haystack, char *needle, size_t len)
 	i = 0;
 	j = 0;
 	int_len = (int)len;
+	if (int_len < 0)
+		int_len = ft_strlen(haystack);
 	if (haystack == NULL && int_len == 0)
 		return (0);
 	if (!*needle)
@@ -33,9 +35,7 @@ char	*ft_strnstr(char *haystack, char *needle, size_t len)
 		{
 			j++;
 			if (needle[j] == '\0')
-			{
 				return (&haystack[i]);
-			}
 		}
 		j = 0;
 		i++;
@@ -47,7 +47,7 @@ char	*ft_strnstr(char *haystack, char *needle, size_t len)
 {
 	char haystack[] = "ababac";
 	char needle[] = "abac";
-//	char haystack2[] = "ababac";
+	char haystack2[] = "ababac";
 	char needle2[] = "abac";
 
 //	char little[] = "FF";
@@ -59,7 +59,7 @@ char	*ft_strnstr(char *haystack, char *needle, size_t len)
 //	char haystack[30] = "aaabcabcd";
 //	char needle[10] = "aabc";
 //	char * empty = (char*)"";
-	printf("%s\n", strnstr("", "", 0));
+	printf("%s\n", strnstr(haystack, needle, -1));
 
 //	printf("%s\n", strnstr("lorem ipsum dolor sit amet", "dolor", 15));
 //	printf("%s\n", ft_strnstr("lorem ipsum dolor sit amet", "dolor", 15));
