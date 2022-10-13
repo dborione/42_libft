@@ -6,39 +6,49 @@
 /*   By: dborione <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 10:47:57 by dborione          #+#    #+#             */
-/*   Updated: 2022/10/13 11:55:51 by dborione         ###   ########.fr       */
+/*   Updated: 2022/10/13 17:12:46 by dborione         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <stdio.h>
-//#include <stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include "libft.h"
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char			*s2;
 	unsigned int	i;
+	unsigned int	j;
 
-	s2 = NULL;
 	i = 0;
-	if (start >= ft_strlen(s))
-			return (0);
+	j = start;
+	if (s == NULL)	
+		return (0);
 	s2 = malloc(sizeof(char) * (len + 1));
 	if (s2 == NULL)
 		return (0);
-	while (i != len && start != (len + start))
+	while (j < (len + start))
+		s2[i++] = s[j++];
+/*	while (s[i])
 	{
-		s2[i] = s[start];
+		if (i >= start && j < len)
+		{
+			s2[j] = s[i];
+			j++;
+		}
 		i++;
-		start++;
-	}
+	}*/
 	s2[i] = '\0';
 	return (s2);
 }
 
 /*int	main()
 {
-	char s[] = "01234";
-	printf("%s\n", ft_substr(s, 10, 10));
+	char *str = NULL;
+	char *bullshit;
+
+	bullshit = (char *)&str[30];
+	bullshit = "FULL BULLSHIT";
+	printf("%s\n", ft_substr("BONJOUR LES HARICOTS !", 25, 25));
 	return (0);
 }*/

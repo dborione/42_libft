@@ -6,7 +6,7 @@
 #    By: cmartino <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/04 08:31:57 by cmartino          #+#    #+#              #
-#    Updated: 2022/10/13 12:23:00 by dborione         ###   ########.fr        #
+#    Updated: 2022/10/13 14:19:11 by dborione         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ SRCS = ft_atoi.c ft_bzero.c ft_calloc.c ft_memchr.c ft_strdup.c		\
 		ft_isalpha.c ft_memcpy.c ft_strlcpy.c ft_toupper.c ft_isascii.c	\
 		ft_memmove.c ft_strlen.c ft_isdigit.c ft_memset.c ft_strncmp.c	\
 		ft_isprint.c ft_strchr.c ft_strnstr.c \
-		ft_substr.c	ft_strjoin.c\
+		ft_substr.c	ft_strjoin.c ft_strtrim.c \
 
 #	Objects
 OBJS = $(SRCS:.c=.o)
