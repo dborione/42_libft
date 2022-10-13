@@ -6,7 +6,7 @@
 /*   By: dborione <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 12:12:06 by dborione          #+#    #+#             */
-/*   Updated: 2022/10/11 17:24:57 by dborione         ###   ########.fr       */
+/*   Updated: 2022/10/13 10:34:07 by dborione         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 
 int	ft_atoi(const char *str)
 {
-	int				i;
+	int						i;
 	unsigned long			res;
-	int				count;
+	int						count;
 
 	i = 0;
 	res = 0;
