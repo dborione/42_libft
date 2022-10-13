@@ -1,38 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dborione <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/10 16:34:04 by dborione          #+#    #+#             */
-/*   Updated: 2022/10/13 13:34:14 by dborione         ###   ########.fr       */
+/*   Created: 2022/10/13 10:47:57 by dborione          #+#    #+#             */
+/*   Updated: 2022/10/13 11:55:51 by dborione         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <stdlib.h>
 //#include <stdio.h>
-//#include <string.h>
+//#include <stdlib.h>
 #include "libft.h"
 
-char	*ft_strdup(const char *s1)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*s2;
+	char			*s2;
+	unsigned int	i;
 
-	s2 = malloc(sizeof(char) * (ft_strlen(s1) + 1));
+	s2 = NULL;
+	i = 0;
+	if (start >= ft_strlen(s))
+			return (0);
+	s2 = malloc(sizeof(char) * (len + 1));
 	if (s2 == NULL)
 		return (0);
-	s2 = ft_memcpy(s2, s1, (ft_strlen(s1) + 1));
+	while (i != len && start != (len + start))
+	{
+		s2[i] = s[start];
+		i++;
+		start++;
+	}
+	s2[i] = '\0';
 	return (s2);
 }
 
 /*int	main()
 {
-	char src1[11] = "an exemple\0";
-	char src2[11] = "an exemple\0";
-
-	printf("%s\n", ft_strdup(src1));
-	printf("%s\n", strdup(src2));
-
+	char s[] = "01234";
+	printf("%s\n", ft_substr(s, 10, 10));
 	return (0);
 }*/
