@@ -6,7 +6,7 @@
 /*   By: dborione <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 13:47:55 by dborione          #+#    #+#             */
-/*   Updated: 2022/10/13 12:19:20 by dborione         ###   ########.fr       */
+/*   Updated: 2022/10/14 10:35:31 by dborione         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <string.h>
 #include <stddef.h>
 #include <limits.h>
+#include <unistd.h>
 //typedef unsigned long size_t;
 
 size_t	ft_strlen(const char *str);

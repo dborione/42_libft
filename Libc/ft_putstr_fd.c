@@ -1,52 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dborione <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/13 10:47:57 by dborione          #+#    #+#             */
-/*   Updated: 2022/10/14 16:33:47 by dborione         ###   ########.fr       */
+/*   Created: 2022/10/14 10:36:31 by dborione          #+#    #+#             */
+/*   Updated: 2022/10/14 11:06:16 by dborione         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+void	ft_putstr_fd(char *s, int fd)
 {
-	char			*s2;
-	unsigned int	i;
-	unsigned int	j;
+	int	i;
 
 	i = 0;
-	j = 0;
-	if (s == NULL)
-		return (0);
-	s2 = malloc(len + 1);
-	if (s2 == NULL)
+	while (s != NULL && s[i])
 	{
-		free(s2);
-		return (0);
-	}
-//	while (j < (len + start))
-//		s2[i++] = s[j++];
-	while (s[i])
-	{
-		if (i >= start && j < len)
-		{
-			s2[j] = s[i];
-			j++;
-		}
+		write(fd, &s[i], 1);
 		i++;
 	}
-	s2[j] = '\0';
-	return (s2);
 }
 
 /*int	main()
 {
-	printf("%s\n", ft_substr("tripouille", 0, 50));
+	ft_putstr_fd(NULL, 0);
 	return (0);
 }*/

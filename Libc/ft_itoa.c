@@ -6,7 +6,7 @@
 /*   By: dborione <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 17:12:59 by dborione          #+#    #+#             */
-/*   Updated: 2022/10/13 18:01:55 by dborione         ###   ########.fr       */
+/*   Updated: 2022/10/14 13:59:47 by dborione         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdio.h>
 #include "libft.h"
 
-char *ft_tochar(int nbr)
+/*char *ft_tochar(int nbr)
 {
 	if (nbr >= 0 && nbr < 10)
 	{
@@ -27,31 +27,41 @@ char *ft_tochar(int nbr)
 		ft_itoa(nbr % 10);
 	}
 	return (str);
+}
 
-
+//void	ft_fillstr(
 
 char *ft_itoa(int nbr)
 {
-	char	*str;
-	int		i;
+	void	*str;
 
 	str = NULL;
-	i = 0;
+
 	str = malloc(sizeof(char) * (sizeof(str) + 1));
 	if (str == NULL)
 		return (0);
 	if (nbr < 0)
 	{
-		str[i] = '-';
 		nbr = -nbr;
-		i++;
+	//	*str = '-';
+		ft_itoa(nbr);
 	}
-
-
+	if (nbr >= 0 && nbr < 10)
+	{
+		ft_memset(str, nbr, 1);
+		str = str + 1;
+		return (str);
+	}
+	else
+	{
+		ft_itoa(nbr / 10);
+		ft_itoa(nbr % 10);
+	}
+	return (0);
 }
 
 int	main()
 {
-	printf("%s\n", ft_itoa(-4));
+	printf("%s\n", ft_itoa(44));
 	return (0);
-}
+}*/

@@ -6,11 +6,11 @@
 /*   By: dborione <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 13:40:06 by dborione          #+#    #+#             */
-/*   Updated: 2022/10/14 15:22:59 by dborione         ###   ########.fr       */
+/*   Updated: 2022/10/14 15:01:01 by dborione         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+//#include <stdio.h>
 #include "libft.h"
 
 char	*ft_strtrim(char const *s1, char const *set)
@@ -27,16 +27,10 @@ char	*ft_strtrim(char const *s1, char const *set)
 	s2 = malloc (sizeof(char) * (ft_strlen(s1) + 1));
 	if (!s2)
 		return (0);
-	while (s1[i] && i < ft_strlen(s1))
+	while (s1[i] && s1[i] == set[j])
 	{
-		while (s1[i + j] && s1[i + j] == set[j] && set[j])
-		{
-			j++;
-			if (set[j] == '\0')
-				;
-		}
-		j = 0;
 		i++;
+		j++;
 	}
 	s2 = &s1[i];
 	s3 = ft_strdup(s2);
