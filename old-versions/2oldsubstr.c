@@ -6,11 +6,12 @@
 /*   By: dborione <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 10:47:57 by dborione          #+#    #+#             */
-/*   Updated: 2022/10/18 15:20:35 by dborione         ###   ########.fr       */
+/*   Updated: 2022/10/18 10:17:25 by dborione         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+//#include <stdio.h>
+//#include <stdlib.h>
 #include "libft.h"
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
@@ -26,6 +27,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	s2 = malloc(len + 1);
 	if (s2 == NULL)
 		return (0);
+//	while (j < (len + start))
+//		s2[i++] = s[j++];
 	while (s[i])
 	{
 		if (i >= start && j < len)
@@ -41,6 +44,9 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 /*int	main()
 {
-	printf("%s\n", ft_substr("abbc", 0, 2+1));
+	//printf("%s\n", ft_substr("tripouille", 0, 50));
+	char *s1 = "   \t  \n\n \t\t  \n\n\nHello \t  Please\n Trim me !\n   \n \n \t\t\n  ";
+	char *set = " \n\t";
+	printf("%s\n", ft_substr(s1, 16, 41-15));
 	return (0);
 }*/

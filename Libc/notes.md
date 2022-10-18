@@ -90,3 +90,8 @@ La fonction a plusieurs problème : ligne 10, ton problème se situe au niveau d
 ###### terminal timer
 
 `while true; do echo -ne "`date`\r"; done`
+
+##### split
+
+			[0][1] [1][1] [2][1]  [3][3] [4][1] [5][0]
+`**tab =	[ e\0] [x\0 ] [e\0]  [mpl\0] [ e\0] [ \0 ]

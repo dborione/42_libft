@@ -6,15 +6,15 @@
 /*   By: dborione <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 17:12:59 by dborione          #+#    #+#             */
-/*   Updated: 2022/10/17 13:16:45 by dborione         ###   ########.fr       */
+/*   Updated: 2022/10/18 18:35:54 by dborione         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //Allocates (with malloc(3)) and returns a string representing the integer received as an argument. Negative numbers must be handled.
-/*#include <stdio.h>
+#include <stdio.h>
 #include "libft.h"
 
-char *ft_tochar(int nbr)
+/*char *ft_tochar(int nbr)
 {
 	if (nbr >= 0 && nbr < 10)
 	{
@@ -74,18 +74,18 @@ char *ft_itoa(int nbr)
 	if (nbr < 0)
 	{
 		ft_memset2(str, '-', 1);
-		str = str + 1;
+	//	str = str + 1;
 		nbr = -nbr;
 	}
 	if (nbr >= 0 && nbr <= 9)
 	{
-		ft_memset2(str, nbr + '0', 1);
+		ft_memset2(str + 1, nbr + '0', 1);
 	}
 	else
 	{
 		while (i < ft_getdigits(nbr))
 		{
-			ft_memset2(str, nbr / 10, 1);
+			ft_memset(str, nbr / 10, 1);
 			ft_itoa(nbr % 10);
 	}
 	return (str);
@@ -93,6 +93,6 @@ char *ft_itoa(int nbr)
 
 int	main()
 {
-	printf("%s\n", ft_itoa(-22));
+	printf("%s\n", ft_itoa(-2));
 	return (0);
 }*/

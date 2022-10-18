@@ -6,7 +6,7 @@
 /*   By: dborione <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 11:33:30 by dborione          #+#    #+#             */
-/*   Updated: 2022/10/17 17:31:50 by dborione         ###   ########.fr       */
+/*   Updated: 2022/10/18 14:54:57 by dborione         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,28 +36,30 @@
 	}
 	tab[i] = '\0';
 	return (tab);
-}
-
-char	*ft_tab(char const *s, char c)
-{
-	char	*ptr;
-
-	while (s[i])
-	{
-		if (str[i] == c)
-			ptr = ft_substr(s, i, ft_strlen(s));
-		i++;
-	}
-	return (ptr);
 }*/
+
+/*void	ft_split_string(char const *s, char c)
+{
+//	char	*new_string;
+//	int		i;
+//	new_string = ft_substr(s, i, ft_strlen(s));
+
+	//i = ft_strlen(s);	
+	if (!ft_strchr(s, c))
+		printf("fds");
+	s = ft_strchr(s, c);
+	printf("%s\n", s);
+	ft_split_string(s, c);
+}
 
 char **ft_split(char const *s, char c)
 {
-	int	i;
-	int	j;
-	char	**tab[j];
+	int		i;
+	int		j;
+	char	**tab;
 
-//	*ptr = malloc(sizeof(*ptr) * (sizeof(
+//	size = nbre de strings apres spli_tab
+//	tab = malloc(sizeof(*tab) * size);
 	i = 0;
 	j = 0;
 	while (tab[j])
@@ -77,14 +79,50 @@ char **ft_split(char const *s, char c)
 	}
 	tab[i][j] = '\0';
 	return (*tab);
-}
+}*/
 
+char	**build_tab(char *s, char c)
+{
+	char **tab = NULL;
+	int	i = 0;
+	int	j = 0;
+
+	tab = malloc(sizeof(tab) * ((ft_strlen(s) + 1) * 10));
+	if (!tab)
+	{
+		free(s);
+		return (0);
+	}
+	while (s[i])
+	{
+		if (s[i] == c)
+		{
+			s = (ft_strchr(s, c) + 1);
+			tab[i][j + 1] = *s;
+			tab[i][j] = c;
+			i++;
+			j++;
+		}
+		i++;
+	}
+	tab[i] = (void *)0;
+	return (*&tab);
+}
 
 int	main()
 {
-	char const *s = "exemple";
-	char c = 'e';
+	//build_tab(s, c); 
+	//ft_split_string(s, c);
 
-	printf("%s\n", ft_split(s, c));
+	char **tab = build_tab("exemple", 'e');
+	int i = 0;
+	while(tab[i] != NULL)
+	{
+		printf("[%s]", tab[i]);
+		i++;
+	}
+	printf("\n");
+	printf("[%s]", tab[0]);
+
 	return (0);
 }
