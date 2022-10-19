@@ -6,7 +6,7 @@
 /*   By: dborione <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 15:43:57 by dborione          #+#    #+#             */
-/*   Updated: 2022/10/19 17:07:02 by dborione         ###   ########.fr       */
+/*   Updated: 2022/10/19 19:02:46 by dborione         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,21 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char			*s2;
+	char	*s2;
 
 	if (!s)
 		return (0);
+	if (ft_strlen(s) == 0)
+	{
+		s2 = malloc(sizeof(char) * 2);
+		if (!s2)
+			return (0);
+		ft_strlcpy(s2, &s[start], len + 1);
+	}
 	if (start >= ft_strlen(s))
 		len = 0;
+	if (len > ft_strlen(s))
+		len = ft_strlen(s);
 	s2 = malloc(sizeof(char) * (len + 1));
 	if (!s2)
 		return (0);
@@ -30,6 +39,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 /*int	main()
 {
-	printf("%s\n", ft_substr("", 10, 2));
+	char *s = "";
+	printf("%s\n", ft_substr(s, 1, 1));
+	printf("%zu\n", ft_strlen(s));
 	return (0);
 }*/
