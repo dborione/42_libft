@@ -1,38 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dborione <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/10 16:34:04 by dborione          #+#    #+#             */
-/*   Updated: 2022/10/19 12:48:01 by dborione         ###   ########.fr       */
+/*   Created: 2022/10/19 15:43:57 by dborione          #+#    #+#             */
+/*   Updated: 2022/10/19 15:52:43 by dborione         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <stdlib.h>
 //#include <stdio.h>
-//#include <string.h>
 #include "libft.h"
 
-char	*ft_strdup(const char *s1)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*s2;
+	char			*s2;
+	char			*s3;
+//	char			*s4;
 
-	s2 = malloc(sizeof(char) * (ft_strlen(s1) + 1));
-	if (s2 == NULL)
+	if (!s)
 		return (0);
-	s2 = ft_memcpy(s2, s1, (ft_strlen(s1) + 1));
-	return (s2);
+	if (start >= ft_strlen(s))
+		return ("");
+	s2 = &((char *)s)[start];
+	s3 = malloc(sizeof(char) * (len + 1));
+	if (!s3)
+		return (0);
+	ft_strlcpy(s3, s2, len + 1);
+/*	s4 = malloc(sizeof(char) * (ft_strlen(s3) + 1));
+	if (!s4)
+	{
+		free(s3);
+		return (0);
+	}
+	s4 = ft_strdup(s3);*/
+	return (s3);
 }
 
 /*int	main()
 {
-	char src1[11] = "an exemple\0";
-	char src2[11] = "an exemple\0";
-
-	printf("%s\n", ft_strdup(src1));
-	printf("%s\n", strdup(src2));
-
+	printf("%s\n", ft_substr("", 5, 0));
 	return (0);
 }*/
