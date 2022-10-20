@@ -6,14 +6,15 @@
 /*   By: dborione <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 17:12:59 by dborione          #+#    #+#             */
-/*   Updated: 2022/10/20 15:35:02 by dborione         ###   ########.fr       */
+/*   Updated: 2022/10/20 13:11:55 by dborione         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <stdio.h>
+//Allocates (with malloc(3)) and returns a string representing the integer received as an argument. Negative numbers must be handled.
+/*#include <stdio.h>
 #include "libft.h"
 
-int	ft_getdigits_nbr(long nbr)
+int	ft_getdigits(int nbr)
 {
 	int	i;
 
@@ -28,42 +29,55 @@ int	ft_getdigits_nbr(long nbr)
 	return (i);
 }
 
-char	*ft_itoa(int nbr)
+void	ft_fillstr(int i, char *str, char c)
 {
-	char	*str;
-	int		i;
-	long	nbr2;
-
-	nbr2 = nbr;
-	i = ft_getdigits_nbr(nbr2);
-	if (nbr2 < 0)
-		i++;
-	str = malloc(sizeof(*str) * (i + 1));
-	if (!str)
-		return (0);
-	str[i] = '\0';
-	str[0] = '\0';
 	while (i > 0)
 	{
-		if (nbr2 < 0)
-		{
-			nbr2 = -nbr2;
-			str[0] = '-';
-		}
-		if (str[0] == '-' && i == 1)
-		{
-			str[i] = nbr2 + '0';
-			return (str);
-		}
-		str[--i] = ((nbr2 % 10) + '0');
-		if (nbr2 > 9)
-			nbr2 = nbr2 / 10;
+		str[i] = c;
+		i--;
+	}
+}
+
+
+char *ft_itoa_bis(int nbr, int i)
+{
+	char	*str;
+	str = malloc(sizeof(char) * 2);
+	if (!str)
+		return (0);
+	if (nbr < 0)
+	{
+		*str = '-';
+		ft_itoa(-nbr);
+	}
+	if (nbr >= 0 && nbr <= 9)
+	{
+		str = str + i;
+	   *str	= nbr + '0';
+	}
+	else
+	{
+		ft_itoa(nbr / 10);
+		ft_itoa(nbr % 10);
 	}
 	return (str);
 }
 
-/*int	main()
+char	*ft_itoa(int nbr)
 {
-	printf("%s\n", ft_itoa(42));
+	int		i;
+	i = ft_getdigits(nbr);
+
+	while (i >= 0)
+	{
+		ft_itoa_bis(nbr, i);
+		i--;
+	}
+	return (str);
+}
+
+int	main()
+{
+	printf("%s\n", ft_itoa(-2));
 	return (0);
 }*/
