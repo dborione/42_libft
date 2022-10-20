@@ -6,7 +6,7 @@
 /*   By: dborione <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 10:37:21 by dborione          #+#    #+#             */
-/*   Updated: 2022/10/19 16:17:39 by dborione         ###   ########.fr       */
+/*   Updated: 2022/10/20 10:50:40 by dborione         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,17 @@
 
 size_t	ft_strlen(const char *str)
 {
-	size_t	maxlen;
+	size_t	len;
 
-	maxlen = 0;
-	while (str[maxlen])
-		maxlen++;
-	return (maxlen);
+	len = 0;
+	while (str[len])
+		len++;
+	return (len);
 }
 
 /*int	main(void)
 {
-	char	*str = "yolo";
+	char	*str = "";
 	printf("%zu", ft_strlen(str));
 	return (0);
 }*/

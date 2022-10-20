@@ -6,7 +6,7 @@
 /*   By: dborione <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 13:35:58 by dborione          #+#    #+#             */
-/*   Updated: 2022/10/19 15:55:56 by dborione         ###   ########.fr       */
+/*   Updated: 2022/10/20 12:06:19 by dborione         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,12 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	char src[11] = "an exemple\0";
 	char dst[8] = "this is\0";
 
-	printf("%lu\n", ft_strlcpy(dst, src, sizeof(dst));
+	char	*src = " tripouille   xxx";
+	char	*dst;
+	dst = malloc(sizeof(*dst) * (ft_strlen(src) - (16 - 2)));
+	if (!dst)
+		return (0);
+	printf("%lu\n", ft_strlcpy(dst, &src[2], 16));
 //	printf("%lu\n", strlcpy(dst, src, sizeof(dst)));
 	printf("%s\n", src);
 	printf("%s\n", dst);
