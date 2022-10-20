@@ -6,11 +6,11 @@
 /*   By: dborione <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 17:07:34 by dborione          #+#    #+#             */
-/*   Updated: 2022/10/20 11:58:34 by dborione         ###   ########.fr       */
+/*   Updated: 2022/10/20 16:41:55 by dborione         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+//#include <stdio.h>
 #include "libft.h"
 
 int	ft_strtrim_start(char const *s1, char const *set)
@@ -55,31 +55,26 @@ char	*ft_strtrim(char const *s1, char const *set)
 {
 	unsigned int	i;
 	unsigned int	j;
-	char 	*s2;
+	char			*s2;
 
 	if (s1 == NULL || set == NULL)
 		return (0);
-	if (s1 == set)
-		return (0);
-//	if (set > s1)
-//		return (0);
 	i = ft_strtrim_start(s1, set);
-	j = ft_strtrim_end(s1, set);
-	printf("%d\n", i);
-	printf("%d\n", j);
-	printf("%zu\n", ft_strlen(s1));
-	s2 = malloc(sizeof(char) * (ft_strlen(s1) - (j + i)));
-	if (!s2)
-		return (0);
-	ft_strlcpy(s2, &s1[i], (ft_strlen(s1) - (j + i)));
-	return ((char *)s2);
+	if (i == ft_strlen(s1))
+		s2 = ft_substr(s1, i, 0);
+	else
+	{
+		j = ft_strtrim_end(s1, set);
+		s2 = ft_substr(s1, i, (j - i + 1));
+	}
+	return (s2);
 }
 
-int	main()
+/*int	main()
 {
-	char *s1 = "amt";
-	char *set = "at";
+	char *s1 = "  ";
+	char *set = " ";
 	printf("%s\n", ft_strtrim(s1, set));
 
 	return (0);
-}
+}*/
