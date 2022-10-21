@@ -6,7 +6,7 @@
 /*   By: dborione <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 11:33:30 by dborione          #+#    #+#             */
-/*   Updated: 2022/10/21 15:33:47 by dborione         ###   ########.fr       */
+/*   Updated: 2022/10/21 14:02:47 by dborione         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,40 +84,29 @@ char **ft_split(char const *s, char c)
 char	**build_tab(char *s, char c)
 {
 	char **tab = NULL;
-	char	*ptr;
-	char	*char_ptr;
 	int	i = 0;
-	int	x = 0;
-	int	s_len;
+	int	j = 0;
 
-	s_len = ft_strlen(s);
-  	ptr = malloc(sizeof(*ptr) * (s_len));
-    if (!ptr)
-      return (0);
-    char_ptr = malloc(sizeof(*char_ptr));
-    if (!char_ptr)
-      return (0);
-	*char_ptr = c;
-    tab = malloc(sizeof(*tab) * 10);
-    if (!tab)
-        return (0);
-    *tab = malloc(sizeof(**tab) * ((s_len + 1)));
-    if (!*tab)
-        return (0);
+	tab = malloc(sizeof(tab) * ((ft_strlen(s) + 1) * 10));
+	if (!tab)
+	{
+		free(s);
+		return (0);
+	}
 	while (s[i])
 	{
 		if (s[i] == c)
 		{
-			ptr = ft_substr(s, i + 1, s_len - (i + 2));
-			tab[x] = char_ptr;
-			tab[x + 1] = ptr;
-			x = x + 2;
+			s = (ft_strchr(s, c) + 1);
+			tab[i][j + 1] = *s;
+			tab[i][j] = c;
 			i++;
+			j++;
 		}
 		i++;
 	}
-	tab[x] = NULL;
-	return (tab);
+	tab[i] = (void *)0;
+	return (*&tab);
 }
 
 int	main()
@@ -127,19 +116,15 @@ int	main()
 
 	char **tab = build_tab("exemple", 'e');
 	int i = 0;
-	int	j = 0;
-    while(tab[i])
-    {
-      while(tab[i][j])
-      {
-        printf("%c", tab[i][j]);
-        j++;
-      }
-      printf("[]");
-      j = 0;
-      i++;
-    }
-	//printf("%c", tab[j][i]);
+	while(tab[i] != NULL)
+	{
+		printf("[%s]", tab[i]);
+		i++;
+	}
+	printf("\n");
+	printf("[%s]", tab[0]);
+
 	return (0);
 
+	substr(s, &s[i], strlen(s) - &s[i]
 }
