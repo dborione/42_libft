@@ -6,7 +6,7 @@
 /*   By: dborione <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 12:12:06 by dborione          #+#    #+#             */
-/*   Updated: 2022/10/20 18:09:04 by dborione         ###   ########.fr       */
+/*   Updated: 2022/10/21 11:37:03 by dborione         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	ft_atoi(const char *str)
 			count = -1;
 		i++;
 	}
-	while (str[i] >= 0 && str[i] <= 9)
+	while (str[i] >= '0' && str[i] <= '9')
 		res = res * 10 + (str[i++] - '0');
 	if (res > LONG_MAX && count == -1)
 		return (0);

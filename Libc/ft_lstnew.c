@@ -1,44 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dborione <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/19 15:43:57 by dborione          #+#    #+#             */
-/*   Updated: 2022/10/21 12:23:46 by dborione         ###   ########.fr       */
+/*   Created: 2022/10/21 11:42:57 by dborione          #+#    #+#             */
+/*   Updated: 2022/10/21 12:21:39 by dborione         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <stdio.h>
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+t_list	*ft_lstnew(void *content)
 {
-	char	*s2;
-	size_t	s_len;
+	t_list	*new_list;
+	void	*ptr;
 
-	if (!s)
+	ptr = malloc(sizeof(ptr));
+	if (!ptr)
 		return (0);
-	s_len = ft_strlen(s);
-	if (start >= s_len)
+	new_list = malloc(sizeof(new_list));
+	if (!new_list)
 	{
-		start = 0;
-		len = 0;
-	}
-	if (len > s_len)
-		len = s_len;
-	s2 = malloc(sizeof(*s2) * (len + 1));
-	if (!s2)
+		free (ptr);
 		return (0);
-	ft_strlcpy(s2, &s[start], len + 1);
-	return (s2);
+	}
+	new_list->content = content;
+	new_list->next = ptr;
+	return (new_list);
 }
 
-/*int	main()
+/*int	main(void)
 {
-	char *s = "";
-	printf("%s\n", ft_substr(s, 1, 1));
-	printf("%zu\n", ft_strlen(s));
+	void	*ptr = NULL;
+	ft_lstnew(ptr);
 	return (0);
 }*/
