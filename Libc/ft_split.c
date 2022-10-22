@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+//#include <stdio.h>
 #include "libft.h"
 
 int	ft_count_c(const char *s, char c)
@@ -29,87 +29,70 @@ int	ft_count_c(const char *s, char c)
 	return (count);
 }
 
-int    ft_find_next_char(char const *s, char c)
+char	**loop(char **tab, char *ptr, const char *s, char c)
 {
-    int    i;
-    int j = 0;
-    i = 0;
-    while (s[i])
-    {
-        if (s[i] != c)
-        {
-            j++;
-            if (s[i + 1] == c)
-              return (j);
-        }
-        i++;
-    }
-    return(j);
-}
-
-char	**ft_split(const char *s, char c)
-{
-	char	**tab = NULL;
-	char	*ptr;
-	int		i = 0;
-	int		x = 0;
-	int		j = 0;
-	int		s_len;
-
-	s_len = ft_strlen(s);
-	ptr = malloc(sizeof(*ptr) * (s_len));
-	if (!ptr)
-		return (0);
-	ptr = strdup(s);
-	tab = malloc(sizeof(*tab) * ft_count_c(s, c));
-	if (!tab)
+	int	i;
+	int	j;
+	int	x;
+	
+	i = 0;
+	j = 0;
+	x = 0;
+	while (s[j])
 	{
-		free(ptr);
-		return (0);
-	}
-	*tab = malloc(sizeof(**tab) * ((s_len + 1)));
-	if (!*tab)
-	{
-		free(ptr);
-		free(tab);
-		return (0);
-	}
-	while (s[i])
-	{
-		if (s[i] != c)
+		while (s[i] == c)
 		{
 			j++;
-			if (s[i + j] == c)
-			{
-				ptr = ft_substr(s, i, j);
-				tab[x] = ptr;
-				x++;
-			}
+			i++;
 		}
-		i++;
+		if (s[j] == c)
+		{
+			ptr = ft_substr(s, i, j - i);
+			tab[x] = ptr;
+			x++;
+			i++;
+		}
+		j++;
 	}
 	tab[x] = NULL;
 	return (tab);
 }
 
-int	main()
+char	**ft_split(const char *s, char c)
 {
-	char **tab = ft_split("exethiseaefjdeppo ", 'e');
-	int i = 0;
-	int	j = 0;
-	//printf("%c", tab[j][i]);
+	char	**tab;
+	char	*ptr;
 
-    while(tab[i])
-    {
-      while(tab[i][j])
-      {
-        printf("%c", tab[i][j]);
-        j++;
-      }
-      printf("[]");
-      j = 0;
-      i++;
-    }
+	ptr = ft_strdup(s);
+	tab = malloc(sizeof(*tab) * ft_count_c(s, c) + 1);
+	if (!tab)
+	{
+		free((void *)s);
+		return (0);
+	}
+	tab = loop(tab, ptr, s, c);
+	return (tab);
+}
+
+/*int	main()
+{
+	char **tab = ft_split("xEmplE", 'E');
+	int 	i = 0;
+	int	j = 0;
+
+
+    	while(tab[i])
+    	{
+      		while(tab[i][j])
+      		{
+        	printf("%c", tab[i][j]);
+        	j++;
+      		}
+      		printf("/");
+      		j = 0;
+      		i++;
+    	}
+      	//printf("0");
 	return (0);
 
-}
+}*/

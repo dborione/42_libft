@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+/*#include "libft.h"
 
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
@@ -20,7 +20,7 @@ void	ft_lstadd_front(t_list **lst, t_list *new)
 	new_lst->content = new;
 }
 
-/*int	main(void)
+int	main(void)
 {
 	void	*ptr = NULL;
 	ft_lstnew(ptr);
