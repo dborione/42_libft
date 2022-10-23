@@ -13,7 +13,7 @@
 //#include <stdio.h>
 #include "libft.h"
 
-int	ft_malloc_tab_size(const char *s, char c)
+int	ft_tab_len(const char *s, char c)
 {
 	int	i;
 	int	j;
@@ -39,12 +39,11 @@ int	ft_malloc_tab_size(const char *s, char c)
 	return (count);
 }
 
-char	**ft_loop(char **tab, char *ptr, const char *s, char c)
+char	**ft_fill_tab(char **tab, char *ptr, const char *s, char c)
 {
 	int	i;
 	int	j;
 	int	x;
-	int	count = 0;
 
 	i = 0;
 	j = 0;
@@ -56,7 +55,6 @@ char	**ft_loop(char **tab, char *ptr, const char *s, char c)
 			i++;
 			if (s[i] == c)
 			{
-				count++;	
 				ptr = ft_substr(s, j, i - j);
 				tab[x] = ptr;
 				x++;
@@ -73,19 +71,33 @@ char	**ft_loop(char **tab, char *ptr, const char *s, char c)
 char	**ft_split(const char *s, char c)
 {
 	char	**tab;
-//	char	*ptr;
+	char	*ptr;
 
-//	ptr = ft_strdup(s);
-	tab = malloc(sizeof(*tab) * ((ft_malloc_tab_size(s, c) + 1)));
-	if (!tab)
+	if (!s)
 		return (0);
-	tab = ft_loop(tab,ptr, s, c);
+	ptr = ft_strdup(s);
+	tab = malloc(sizeof(*tab) * ((ft_tab_len(s, c) + 1)));
+	if (!tab)
+	{
+		free(ptr);
+		return (0);
+	}
+	tab = ft_fill_tab(tab, ptr, s, c);
+	free(ptr);
 	return (tab);
 }
 
 /*int	main()
 {
-	char **tab = ft_split("zehzzfjfdkz", 'z');
+	const char *s = "exemple";
+	char **tab = ft_split(s, 'e');
+	if (!s)
+	{
+		free(tab);	
+		return (0);
+	}
+//ft_split(NULL, 'z');
+
 	int 	i = 0;
 	int	j = 0;
 
@@ -103,5 +115,4 @@ char	**ft_split(const char *s, char c)
     	}
       	printf("%s\n", tab[i]);
 	return (0);
-
 }*/
