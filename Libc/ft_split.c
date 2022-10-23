@@ -13,46 +13,58 @@
 //#include <stdio.h>
 #include "libft.h"
 
-int	ft_count_c(const char *s, char c)
+int	ft_malloc_tab_size(const char *s, char c)
 {
 	int	i;
+	int	j;
 	int	count;
 
-	count = 0;
 	i = 0;
+	j = 0;
+	count = 0;
 	while (s[i])
 	{
-		if (s[i] == c)
-			count++;
+		while (s[i] != c)
+		{
+			i++;
+			if (s[i] == c)
+			{
+				count++;	
+				j = i;
+			}
+		}
+		j++;
 		i++;
 	}
 	return (count);
 }
 
-char	**loop(char **tab, char *ptr, const char *s, char c)
+char	**ft_loop(char **tab, char *ptr, const char *s, char c)
 {
 	int	i;
 	int	j;
 	int	x;
-	
+	int	count = 0;
+
 	i = 0;
 	j = 0;
 	x = 0;
-	while (s[j])
+	while (s[i])
 	{
-		while (s[i] == c)
+		while (s[i] != c)
 		{
-			j++;
 			i++;
-		}
-		if (s[j] == c)
-		{
-			ptr = ft_substr(s, i, j - i);
-			tab[x] = ptr;
-			x++;
-			i++;
+			if (s[i] == c)
+			{
+				count++;	
+				ptr = ft_substr(s, j, i - j);
+				tab[x] = ptr;
+				x++;
+				j = i;
+			}
 		}
 		j++;
+		i++;
 	}
 	tab[x] = NULL;
 	return (tab);
@@ -61,22 +73,19 @@ char	**loop(char **tab, char *ptr, const char *s, char c)
 char	**ft_split(const char *s, char c)
 {
 	char	**tab;
-	char	*ptr;
+//	char	*ptr;
 
-	ptr = ft_strdup(s);
-	tab = malloc(sizeof(*tab) * ft_count_c(s, c) + 1);
+//	ptr = ft_strdup(s);
+	tab = malloc(sizeof(*tab) * ((ft_malloc_tab_size(s, c) + 1)));
 	if (!tab)
-	{
-		free((void *)s);
 		return (0);
-	}
-	tab = loop(tab, ptr, s, c);
+	tab = ft_loop(tab,ptr, s, c);
 	return (tab);
 }
 
 /*int	main()
 {
-	char **tab = ft_split("xEmplE", 'E');
+	char **tab = ft_split("zehzzfjfdkz", 'z');
 	int 	i = 0;
 	int	j = 0;
 
@@ -88,11 +97,11 @@ char	**ft_split(const char *s, char c)
         	printf("%c", tab[i][j]);
         	j++;
       		}
-      		printf("/");
+      		printf("[]");
       		j = 0;
       		i++;
     	}
-      	//printf("0");
+      	printf("%s\n", tab[i]);
 	return (0);
 
 }*/
