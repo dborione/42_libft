@@ -6,7 +6,7 @@
 /*   By: dborione <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 11:33:30 by dborione          #+#    #+#             */
-/*   Updated: 2022/10/24 18:20:36 by dborione         ###   ########.fr       */
+/*   Updated: 2022/10/24 18:17:15 by dborione         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,31 @@ static char	**ft_fill_tab(char **tab, const char *s, char *ptr, char c)
 	return (tab);
 }
 
+static char	**ft_count_zero(char **tab, const char *s, char *ptr, char c)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == c)
+		{
+			tab = malloc(sizeof(*tab));
+			if (!tab)
+				return (NULL);
+			tab[0] = NULL;
+			return (tab);
+		}
+		i++;
+	}
+	tab = malloc(sizeof(*tab) * 2);
+	if (!tab)
+		return (NULL);
+	tab[0] = ptr;
+	tab[1] = NULL;
+	return (tab);
+}
+
 char	**ft_split(const char *s, char c)
 {
 	char	**tab;
@@ -84,6 +109,9 @@ char	**ft_split(const char *s, char c)
 		return (ft_count_zero(tab, s, ptr, c));
 	ptr = ft_strdup(s);
 	count = ft_tab_len(s, c);
+/*	printf("%d\n", count);
+	if (count == 0)
+		return (ft_count_zero(tab, s, ptr, c));*/
 	tab = malloc(sizeof(*tab) * (count + 1));
 	if (!tab)
 		return (NULL);
