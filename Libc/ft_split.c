@@ -6,7 +6,7 @@
 /*   By: dborione <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 11:33:30 by dborione          #+#    #+#             */
-/*   Updated: 2022/10/25 13:28:49 by dborione         ###   ########.fr       */
+/*   Updated: 2022/10/25 13:35:11 by dborione         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,36 +70,16 @@ static char	**ft_fill_tab(char **tab, const char *s, char *ptr, char c)
 	return (tab);
 }
 
-/*static char	**ft_count_zero(char **tab, const char *s, char *ptr, char c)
+char	**ft_empty_tab(char **tab, char *ptr)
 {
-	int	i;
-
-	i = 0;
-	while (s[i])
-	{
-		while (s[i] == c)
-		{
-			i++;
-			if (s[i] != c)
-				return (1);
-			if (s[i] == '\0')
-			{
-				tab = malloc(sizeof(*tab));
-				if (!tab)
-					return (NULL);
-				tab[0] = NULL;
-				free(ptr);
-				return (tab);
-			}
-		}
-		i++;
-	}
 	tab = malloc(sizeof(*tab));
 	if (!tab)
 		return (NULL);
 	tab[0] = NULL;
+	if (ptr)
+		free(ptr);
 	return (tab);
-}*/
+}
 
 char	**ft_split(const char *s, char c)
 {
@@ -113,24 +93,11 @@ char	**ft_split(const char *s, char c)
 	ptr = NULL;
 	count = 0;
 	if (ft_strlen(s) == 0)
-	{
-		tab = malloc(sizeof(*tab));
-		if (!tab)
-			return (NULL);
-		tab[0] = NULL;
-		return (tab);
-	}
+		return (ft_empty_tab(tab, ptr));
 	ptr = ft_strdup(s);
 	count = ft_tab_len(s, c);
 	if (count == 0)
-	{
-		tab = malloc(sizeof(*tab));
-		if (!tab)
-			return (NULL);
-		tab[0] = NULL;
-		free(ptr);
-		return (tab);
-	}
+		return (ft_empty_tab(tab, ptr));
 	tab = malloc(sizeof(*tab) * (count + 1));
 	if (!tab)
 		return (NULL);
