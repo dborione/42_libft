@@ -6,7 +6,7 @@
 /*   By: dborione <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 10:07:28 by dborione          #+#    #+#             */
-/*   Updated: 2022/10/25 12:13:43 by dborione         ###   ########.fr       */
+/*   Updated: 2022/10/25 17:10:45 by dborione         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,11 @@ t_list	*ft_lstlast(t_list *lst)
 {
 	t_list	*trav;
 
+	if (!lst)
+		return (NULL);
 	trav = lst;
-	while (trav)
-	{
-		if (!trav->next)
-			return (trav);
+	while (trav->next)
 		trav = trav->next;
-	}
 	return (trav);
 }
 

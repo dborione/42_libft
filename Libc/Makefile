@@ -6,7 +6,7 @@
 #    By: cmartino <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/04 08:31:57 by cmartino          #+#    #+#              #
-#    Updated: 2022/10/25 12:00:18 by dborione         ###   ########.fr        #
+#    Updated: 2022/10/25 17:26:52 by dborione         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ SRCS = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c	ft_isprint.c	\
 		ft_split.c	\
 
 BONUS =	ft_lstadd_front.c ft_lstnew.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c	\
-	   ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c	\
+		ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c	\
 
 #	Objects
 OBJS = $(SRCS:.c=.o)
