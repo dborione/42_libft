@@ -6,7 +6,7 @@
 /*   By: dborione <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 11:33:30 by dborione          #+#    #+#             */
-/*   Updated: 2022/10/25 13:38:29 by dborione         ###   ########.fr       */
+/*   Updated: 2022/10/25 14:06:40 by dborione         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,15 @@ static int	ft_tab_len(const char *ptr, char c)
 	unsigned long	i;
 	int				j;
 	int				count;
+	unsigned int	len;
 
 	i = 0;
 	j = 0;
 	count = 0;
-	if (c == '\0')
-		return (1);
-	while (i < ft_strlen(ptr))
+	len = ft_strlen(ptr);
+	while (i < len)
 	{
-		while (i < ft_strlen(ptr) && ptr[i] != c)
+		while (i < len && ptr[i] != c)
 		{
 			i++;
 			if (ptr[i] == c || ptr[i] == '\0')
@@ -74,7 +74,11 @@ static char	**ft_empty_tab(char **tab, char *ptr)
 {
 	tab = malloc(sizeof(*tab));
 	if (!tab)
+	{
+		if (ptr)
+			free(ptr);
 		return (NULL);
+	}
 	tab[0] = NULL;
 	if (ptr)
 		free(ptr);
@@ -89,18 +93,20 @@ char	**ft_split(const char *s, char c)
 
 	if (!s)
 		return (NULL);
-	tab = NULL;
-	ptr = NULL;
 	count = 0;
-	if (ft_strlen(s) == 0)
-		return (ft_empty_tab(tab, ptr));
+	tab = NULL;
 	ptr = ft_strdup(s);
+	if (!ptr)
+		return (NULL);
 	count = ft_tab_len(s, c);
 	if (count == 0)
 		return (ft_empty_tab(tab, ptr));
 	tab = malloc(sizeof(*tab) * (count + 1));
 	if (!tab)
+	{
+		free(ptr);
 		return (NULL);
+	}
 	tab = ft_fill_tab(tab, s, ptr, c);
 	free(ptr);
 	return (tab);

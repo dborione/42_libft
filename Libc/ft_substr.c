@@ -6,7 +6,7 @@
 /*   By: dborione <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 15:43:57 by dborione          #+#    #+#             */
-/*   Updated: 2022/10/21 12:23:46 by dborione         ###   ########.fr       */
+/*   Updated: 2022/10/25 14:01:53 by dborione         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t	s_len;
 
 	if (!s)
-		return (0);
+		return (NULL);
 	s_len = ft_strlen(s);
 	if (start >= s_len)
 	{
@@ -30,7 +30,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		len = s_len;
 	s2 = malloc(sizeof(*s2) * (len + 1));
 	if (!s2)
-		return (0);
+		return (NULL);
 	ft_strlcpy(s2, &s[start], len + 1);
 	return (s2);
 }
