@@ -6,7 +6,7 @@
 /*   By: dborione <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 11:33:30 by dborione          #+#    #+#             */
-/*   Updated: 2022/10/25 13:35:11 by dborione         ###   ########.fr       */
+/*   Updated: 2022/10/25 13:38:29 by dborione         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ static int	ft_tab_len(const char *ptr, char c)
 static char	**ft_fill_tab(char **tab, const char *s, char *ptr, char c)
 {
 	size_t	i;
-	int	j;
-	int	x;
-	
+	int		j;
+	int		x;
+
 	i = 0;
 	j = 0;
 	x = 0;
@@ -70,7 +70,7 @@ static char	**ft_fill_tab(char **tab, const char *s, char *ptr, char c)
 	return (tab);
 }
 
-char	**ft_empty_tab(char **tab, char *ptr)
+static char	**ft_empty_tab(char **tab, char *ptr)
 {
 	tab = malloc(sizeof(*tab));
 	if (!tab)
