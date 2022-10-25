@@ -6,7 +6,7 @@
 /*   By: dborione <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 11:33:30 by dborione          #+#    #+#             */
-/*   Updated: 2022/10/24 19:02:18 by dborione         ###   ########.fr       */
+/*   Updated: 2022/10/25 13:28:49 by dborione         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ static int	ft_tab_len(const char *ptr, char c)
 		return (1);
 	while (i < ft_strlen(ptr))
 	{
-		while (ptr[i] != c)
+		while (i < ft_strlen(ptr) && ptr[i] != c)
 		{
 			i++;
-			if (ptr[i] == c)
+			if (ptr[i] == c || ptr[i] == '\0')
 			{
 				count++;
 				j = i;
@@ -70,30 +70,36 @@ static char	**ft_fill_tab(char **tab, const char *s, char *ptr, char c)
 	return (tab);
 }
 
-static char	**ft_count_zero(char **tab, const char *s, char *ptr, char c)
+/*static char	**ft_count_zero(char **tab, const char *s, char *ptr, char c)
 {
 	int	i;
 
 	i = 0;
 	while (s[i])
 	{
-		if (s[i] == c)
+		while (s[i] == c)
 		{
-			tab = malloc(sizeof(*tab));
-			if (!tab)
-				return (NULL);
-			tab[0] = NULL;
-			return (tab);
+			i++;
+			if (s[i] != c)
+				return (1);
+			if (s[i] == '\0')
+			{
+				tab = malloc(sizeof(*tab));
+				if (!tab)
+					return (NULL);
+				tab[0] = NULL;
+				free(ptr);
+				return (tab);
+			}
 		}
 		i++;
 	}
-	tab = malloc(sizeof(*tab) * 2);
+	tab = malloc(sizeof(*tab));
 	if (!tab)
 		return (NULL);
-	tab[0] = ptr;
-	tab[1] = NULL;
+	tab[0] = NULL;
 	return (tab);
-}
+}*/
 
 char	**ft_split(const char *s, char c)
 {
@@ -107,9 +113,24 @@ char	**ft_split(const char *s, char c)
 	ptr = NULL;
 	count = 0;
 	if (ft_strlen(s) == 0)
-		return (ft_count_zero(tab, s, ptr, c));
+	{
+		tab = malloc(sizeof(*tab));
+		if (!tab)
+			return (NULL);
+		tab[0] = NULL;
+		return (tab);
+	}
 	ptr = ft_strdup(s);
 	count = ft_tab_len(s, c);
+	if (count == 0)
+	{
+		tab = malloc(sizeof(*tab));
+		if (!tab)
+			return (NULL);
+		tab[0] = NULL;
+		free(ptr);
+		return (tab);
+	}
 	tab = malloc(sizeof(*tab) * (count + 1));
 	if (!tab)
 		return (NULL);
@@ -120,14 +141,19 @@ char	**ft_split(const char *s, char c)
 
 /*int	main()
 {
-	const char *s = "jregjl kljfls jfdlks";
+	const char *s = " Tripouille";
 	char **tab = ft_split(s, ' ');
 	if (!s)
 	{
 		//free(tab);	
 		return (0);
 	}
-	
+	if (tab[1] == NULL)
+		printf("ok");
+	printf("%s\n", tab[0]);
+	printf("%zu\n", ft_strlen("Tripouille"));
+	printf("%zu\n", ft_strlen(tab[0]));
+
 	unsigned long 	i = 0;
 	int		j = 0;
 //	printf("%lu\n", sizeof(tab[50]));
