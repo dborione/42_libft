@@ -6,7 +6,7 @@
 /*   By: dborione <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 11:33:30 by dborione          #+#    #+#             */
-/*   Updated: 2022/10/25 14:06:40 by dborione         ###   ########.fr       */
+/*   Updated: 2022/10/25 16:02:43 by dborione         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static int	ft_tab_len(const char *ptr, char c)
 	return (count);
 }
 
-static char	**ft_fill_tab(char **tab, const char *s, char *ptr, char c)
+static char	**ft_fill_tab(char **tab, const char *s, char c)
 {
 	size_t	i;
 	int		j;
@@ -57,8 +57,18 @@ static char	**ft_fill_tab(char **tab, const char *s, char *ptr, char c)
 			i++;
 			if (s[i] == c || s[i] == '\0')
 			{
-				ptr = ft_substr(s, j, i - j);
-				tab[x] = ptr;
+				tab[x] = ft_substr(s, j, i - j);
+				if (!tab[x])
+				{
+					x = 0;
+					while (tab[x])
+					{
+						free(tab[x]);
+						x++;
+					}
+					free(tab);
+					return (NULL);
+				}
 				x++;
 				j = i;
 			}
@@ -70,45 +80,31 @@ static char	**ft_fill_tab(char **tab, const char *s, char *ptr, char c)
 	return (tab);
 }
 
-static char	**ft_empty_tab(char **tab, char *ptr)
+static char	**ft_empty_tab(char **tab)
 {
 	tab = malloc(sizeof(*tab));
 	if (!tab)
-	{
-		if (ptr)
-			free(ptr);
 		return (NULL);
-	}
 	tab[0] = NULL;
-	if (ptr)
-		free(ptr);
 	return (tab);
 }
 
 char	**ft_split(const char *s, char c)
 {
 	char	**tab;
-	char	*ptr;
 	int		count;
 
 	if (!s)
 		return (NULL);
 	count = 0;
 	tab = NULL;
-	ptr = ft_strdup(s);
-	if (!ptr)
-		return (NULL);
 	count = ft_tab_len(s, c);
 	if (count == 0)
-		return (ft_empty_tab(tab, ptr));
+		return (ft_empty_tab(tab));
 	tab = malloc(sizeof(*tab) * (count + 1));
 	if (!tab)
-	{
-		free(ptr);
 		return (NULL);
-	}
-	tab = ft_fill_tab(tab, s, ptr, c);
-	free(ptr);
+	tab = ft_fill_tab(tab, s, c);
 	return (tab);
 }
 
