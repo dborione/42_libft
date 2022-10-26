@@ -6,7 +6,7 @@
 /*   By: dborione <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 10:27:20 by dborione          #+#    #+#             */
-/*   Updated: 2022/10/24 17:50:03 by dborione         ###   ########.fr       */
+/*   Updated: 2022/10/26 12:38:52 by dborione         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	size_t		i;
-	unsigned char		*dest2;
+	size_t			i;
+	unsigned char	*dest2;
 	unsigned char	*src2;
 
 	if (!dest && !src)

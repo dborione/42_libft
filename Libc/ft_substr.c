@@ -6,7 +6,7 @@
 /*   By: dborione <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 15:43:57 by dborione          #+#    #+#             */
-/*   Updated: 2022/10/25 16:02:51 by dborione         ###   ########.fr       */
+/*   Updated: 2022/10/26 12:40:02 by dborione         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	if (!s2)
 		return (NULL);
 	ft_strlcpy(s2, &s[start], len + 1);
-
 	return (s2);
 }
 
