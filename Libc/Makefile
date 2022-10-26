@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cmartino <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: dborione <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/10/04 08:31:57 by cmartino          #+#    #+#              #
-#    Updated: 2022/10/26 11:52:39 by dborione         ###   ########.fr        #
+#    Created: 2022/10/26 12:59:14 by dborione          #+#    #+#              #
+#    Updated: 2022/10/26 12:59:19 by dborione         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,8 +26,9 @@ SRCS = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c	ft_isprint.c	\
 	   ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c	\
 		ft_split.c	\
 
-BONUS =	ft_lstadd_front.c ft_lstnew.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c	\
-		ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c	\
+BONUS =	ft_lstadd_front_bonus.c ft_lstnew_bonus.c ft_lstsize_bonus.c ft_lstlast_bonus.c	\
+		ft_lstadd_back_bonus.c ft_lstdelone_bonus.c ft_lstclear_bonus.c ft_lstiter_bonus.c \
+		ft_lstmap_bonus.c	\
 
 #	Objects
 OBJS = $(SRCS:.c=.o)
