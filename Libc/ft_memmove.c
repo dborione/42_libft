@@ -6,7 +6,7 @@
 /*   By: dborione <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 10:22:24 by dborione          #+#    #+#             */
-/*   Updated: 2022/10/10 17:40:27 by dborione         ###   ########.fr       */
+/*   Updated: 2022/10/26 12:43:32 by dborione         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 {
 	unsigned char	*dest2;
 	unsigned char	*src2;
-	size_t	i;
+	size_t			i;
 
 	if (!dest && !src)
 		return (0);
