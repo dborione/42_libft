@@ -6,11 +6,11 @@
 /*   By: dborione <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 15:43:57 by dborione          #+#    #+#             */
-/*   Updated: 2022/10/26 12:40:02 by dborione         ###   ########.fr       */
+/*   Updated: 2022/10/26 13:05:42 by dborione         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+//#include <stdio.h>
 #include "libft.h"
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
