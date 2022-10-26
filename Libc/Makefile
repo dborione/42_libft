@@ -6,12 +6,12 @@
 #    By: dborione <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/26 12:59:14 by dborione          #+#    #+#              #
-#    Updated: 2022/10/26 15:41:42 by dborione         ###   ########.fr        #
+#    Updated: 2022/10/26 16:39:29 by dborione         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #	Compiler
-CC = gcc
+CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
 #	Sources
@@ -53,8 +53,8 @@ $(NAME): $(OBJS)
 
 all :	$(NAME)
 
-bonus: $(OBJ) $(B_OBJS)
-	ar rcs $(NAME) $(OBJ) $(B_OBJS)
+bonus: $(OBJS) $(B_OBJS)
+	ar rcs $(NAME) $(OBJS) $(B_OBJS)
 
 #	Cleaning
 clean:

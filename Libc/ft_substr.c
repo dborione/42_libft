@@ -6,7 +6,7 @@
 /*   By: dborione <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 15:43:57 by dborione          #+#    #+#             */
-/*   Updated: 2022/10/26 13:05:42 by dborione         ###   ########.fr       */
+/*   Updated: 2022/10/26 17:36:08 by dborione         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		start = 0;
 		len = 0;
 	}
-	if ((start + len > s_len) || (len > s_len))
+	if (start + len > s_len)
 		len = s_len - start;
 	s2 = malloc(sizeof(*s2) * (len + 1));
 	if (!s2)

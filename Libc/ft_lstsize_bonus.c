@@ -6,7 +6,7 @@
 /*   By: dborione <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 12:55:16 by dborione          #+#    #+#             */
-/*   Updated: 2022/10/26 12:55:27 by dborione         ###   ########.fr       */
+/*   Updated: 2022/10/26 16:55:07 by dborione         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ int	ft_lstsize(t_list *lst)
 
 	tmp = lst;
 	i = 0;
-	if (!lst)
-		return (0);
 	while (tmp)
 	{
 		tmp = tmp->next;

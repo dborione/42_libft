@@ -6,7 +6,7 @@
 /*   By: dborione <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 12:12:06 by dborione          #+#    #+#             */
-/*   Updated: 2022/10/26 15:42:21 by dborione         ###   ########.fr       */
+/*   Updated: 2022/10/26 17:35:48 by dborione         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 //include <stdio.h>
 //#include "libft.h"
 
-/// not working with long long max
-int	ft_convert(const char *str, int i, int sign, unsigned long res)
+static int	ft_convert(const char *str, int i, int sign, long res)
 {
+	long	save;
+
 	while (str[i] >= '0' && str[i] <= '9')
 	{
-		if (res > 9223372036854775807 && sign == -1)
-			return (0);
-		else if (res > 9223372036854775807)
-			return (-1);
+		save = res;
 		res = res * 10 + (str[i++] - '0');
+		if (res < save)
+			return (-(sign == 1));
 	}
 	return (res * sign);
 }
