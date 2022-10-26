@@ -6,7 +6,7 @@
 #    By: dborione <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/26 12:59:14 by dborione          #+#    #+#              #
-#    Updated: 2022/10/26 13:25:19 by dborione         ###   ########.fr        #
+#    Updated: 2022/10/26 15:41:42 by dborione         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,6 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
 #	Sources
-#	SRCS := $(shell find . -name '*.c')
 SRCS = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c	ft_isprint.c	\
 	   ft_strlen.c ft_memset.c ft_bzero.c ft_memcpy.c ft_memmove.c	\
 	   ft_strlcpy.c ft_strlcat.c ft_toupper.c ft_tolower.c	\
