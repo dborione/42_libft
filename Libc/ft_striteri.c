@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+//#include <stdio.h>
+
 void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
 	unsigned int	i;
@@ -19,8 +21,22 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 	{
 		while (s[i])
 		{
-			f(i, s + i);
+			f(i, &s[i]);
 			i++;
 		}
 	}
 }
+
+/*void	ft_to_upper(unsigned int i, char *s)
+{
+	s[i] = 'L';
+}
+
+int	main()
+{
+	char	s[] = "lol";
+
+	ft_striteri(s, ft_to_upper);
+	printf("%s\n", s);
+	return (0);
+}*/

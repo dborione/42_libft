@@ -17,13 +17,16 @@
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
 	size_t		i;
-	char		*dest2;
-	const char	*src2;
-	if (!dest && !src && n)
-		return (dest);
+	unsigned char		*dest2;
+	unsigned char	*src2;
+
+	if (!dest && !src)
+		return (0);
 	i = 0;
-	dest2 = (char *)dest;
-	src2 = (const char *)src;
+	dest2 = (unsigned char *)dest;
+	src2 = (unsigned char *)src;
+	if (dest == src)
+		return (dest2);
 	while (i < n)
 	{
 		dest2[i] = src2[i];
@@ -34,15 +37,11 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 
 /*int		main()
 {
-	char	src1[]= "exemple hfghfg hfgh";
-	char	dest1[20]= "\0";
-//	char	str2[]= "exemple";
-//	char	dest2[20];
+	char	*src = "fds";
+	char	*dest = src;
 
-//	memcpy(NULL, NULL, 3);
-//	printf("%s\n", dest1);
-	ft_memcpy(dest1, src1, sizeof(dest1));
-	printf("%s\n", dest1);
+	ft_memcpy(dest, src, 11);
+	printf("%s\n", dest);
 
 	return(0);
 }*/

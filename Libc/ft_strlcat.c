@@ -38,17 +38,10 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 
 /*int	main()
 {
-//	char *src = "lorem";
-	char *dst;
+	char src[] = "lorem";
+	char dst[] = " ipsum";
 
-	dst[11] = 'a';
-//	printf("%lu\n", sizeof(dst));
-//	printf("%lu\n", ft_strlen(src));
-
-	printf("%lu\n", strlcat(dst, "loremop", 15));
-//	printf("%lu\n", strlcat(dst, src, 15));
-//	printf("%s", dst);
-//	printf("%lu\n", ft_strlcat(NULL, src, 0));
+	printf("%zu\n", ft_strlcat(dst, src, ft_strlen(dst)+1));
 
 	return (0);
 }*/

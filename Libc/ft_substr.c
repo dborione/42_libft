@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <stdio.h>
+#include <stdio.h>
 #include "libft.h"
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
@@ -26,19 +26,21 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		start = 0;
 		len = 0;
 	}
-	if (len > s_len)
-		len = s_len;
+	if ((start + len > s_len) || (len > s_len))
+		len = s_len - start;
 	s2 = malloc(sizeof(*s2) * (len + 1));
 	if (!s2)
 		return (NULL);
 	ft_strlcpy(s2, &s[start], len + 1);
+
 	return (s2);
 }
 
 /*int	main()
 {
-	char *s = "";
-	printf("%s\n", ft_substr(s, 1, 1));
-	printf("%zu\n", ft_strlen(s));
+	char *s = "hello";
+	char *ptr = ft_substr(s, 0, 3);
+	printf("%s\n", ptr);
+	printf("%zu\n", ft_strlen(ptr) + 1);
 	return (0);
 }*/

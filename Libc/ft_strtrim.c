@@ -13,10 +13,10 @@
 //#include <stdio.h>
 #include "libft.h"
 
-int	ft_strtrim_start(char const *s1, char const *set)
+size_t	ft_strtrim_start(char const *s1, char const *set)
 {
-	unsigned int	i;
-	unsigned int	j;
+	size_t	i;
+	size_t	j;
 
 	i = 0;
 	j = 0;
@@ -32,10 +32,10 @@ int	ft_strtrim_start(char const *s1, char const *set)
 	return (i);
 }
 
-int	ft_strtrim_end(char const *s1, char const *set)
+size_t	ft_strtrim_end(char const *s1, char const *set)
 {
-	unsigned int	i;
-	unsigned int	j;
+	size_t	i;
+	size_t	j;
 
 	i = ft_strlen(s1) - 1;
 	j = 0;
@@ -53,12 +53,12 @@ int	ft_strtrim_end(char const *s1, char const *set)
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	unsigned int	i;
-	unsigned int	j;
+	size_t	i;
+	size_t	j;
 	char			*s2;
 
-	if (s1 == NULL || set == NULL)
-		return (0);
+	if (!s1 || !set)
+		return (NULL);
 	i = ft_strtrim_start(s1, set);
 	if (i == ft_strlen(s1))
 		s2 = ft_substr(s1, i, 0);

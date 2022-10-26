@@ -16,24 +16,22 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	unsigned long	i;
+	size_t	i;
 
 	i = 0;
-	while (s[i] != (unsigned char)c)
+	while (s[i] != (char)c)
 	{
 		i++;
 		if (i == (ft_strlen(s) + 1))
-			return (0);
+			return (NULL);
 	}
 	return ((char *)&s[i]);
 }
 
 /*int	main()
 {
-//	char *str = "dddd";
-//	int	c = 't';
-	char s[] = "tripouille";
+	char s[] = "hfjs";
 
-	printf("%s", ft_strchr(s, 't'+ 256));
+	printf("%s", ft_strchr(s, 't'));
 	return (0);
 }*/
