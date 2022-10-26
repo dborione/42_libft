@@ -6,7 +6,7 @@
 #    By: dborione <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/26 12:59:14 by dborione          #+#    #+#              #
-#    Updated: 2022/10/26 12:59:19 by dborione         ###   ########.fr        #
+#    Updated: 2022/10/26 13:25:19 by dborione         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,11 +61,11 @@ bonus: $(OBJ) $(B_OBJS)
 clean:
 	@echo "$(YELLOW)[Cleaning...]$(DEFAULT)"
 	$(RM) $(OBJS) $(B_OBJS)
-	@echo "$(RED)[Objects Cleaned!]$(DEAFULT)"
+	@echo "$(RED)[Clean Done!]$(DEAFULT)"
 
 fclean: clean
 	$(RM) $(NAME)
-	@echo "$(RED)[Executable Cleaned!]$(DEFAULT)"
+	@echo "$(RED)[Fclean Done!]$(DEFAULT)"
 
 re: fclean all
 
