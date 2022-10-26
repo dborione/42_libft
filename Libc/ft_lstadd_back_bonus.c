@@ -1,36 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dborione <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/26 11:11:02 by dborione          #+#    #+#             */
-/*   Updated: 2022/10/26 11:52:15 by dborione         ###   ########.fr       */
+/*   Created: 2022/10/26 12:52:27 by dborione          #+#    #+#             */
+/*   Updated: 2022/10/26 12:52:53 by dborione         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+//#include <stdio.h>
 #include "libft.h"
 
-t_list *ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
 	t_list	*tmp;
-	t_list	*new_lst;
 
-	new_lst = NULL;
-	if (!lst || !f || !del)
-		return (NULL);
-	while (lst)
+	if (!lst)
+		return ;
+	if (!*lst)
+		*lst = new;
+	else if (lst)
 	{
-		tmp = ft_lstnew(NULL);
-		if (!tmp)
-		{
-			ft_lstclear(&new_lst, del);
-			return (NULL);
-		}
-		tmp->content = f(tmp->content);
-		ft_lstadd_back(&tmp, new_lst);
-		lst = lst->next;
+		tmp = ft_lstlast(*lst);
+		tmp->next = new;
 	}
-	return (new_lst);
 }
+
+/*int	main(void)
+{
+	t_list	*lst;
+	t_list	*new;
+	t_list	*tmp;
+
+	lst = ft_lstnew("ex");
+	new = ft_lstnew("lol");
+	ft_lstadd_back(&lst, new);
+	if (new)
+	{
+		tmp = lst;
+		tmp = tmp->next;
+		printf("%s\n", tmp->content);
+	}
+	return (0);
+}*/

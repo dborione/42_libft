@@ -1,47 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   ft_lstadd_front_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dborione <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/25 10:11:35 by dborione          #+#    #+#             */
-/*   Updated: 2022/10/26 10:59:43 by dborione         ###   ########.fr       */
+/*   Created: 2022/10/26 12:53:02 by dborione          #+#    #+#             */
+/*   Updated: 2022/10/26 12:53:04 by dborione         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //#include <stdio.h>
 #include "libft.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	t_list	*tmp;
-
-	if (!lst)
-		return ;
-	if (!*lst)
-		*lst = new;
-	else if (lst)
+	if (lst && new)
 	{
-		tmp = ft_lstlast(*lst);
-		tmp->next = new;
+		new->next = *lst;
+		*lst = new;
 	}
 }
 
-/*int	main(void)
+/*int	main()
 {
 	t_list	*lst;
-	t_list	*new;
-	t_list	*tmp;
+	t_list	*new_node;
 
 	lst = ft_lstnew("ex");
-	new = ft_lstnew("lol");
-	ft_lstadd_back(&lst, new);
-	if (new)
-	{
-		tmp = lst;
-		tmp = tmp->next;
-		printf("%s\n", tmp->content);
-	}
+	new_node = ft_lstnew("lol");
+	ft_lstadd_front(&lst, new_node);
+	printf("%s\n", lst->content);
 	return (0);
 }*/
