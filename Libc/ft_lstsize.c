@@ -6,7 +6,7 @@
 /*   By: dborione <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 09:58:40 by dborione          #+#    #+#             */
-/*   Updated: 2022/10/25 10:06:40 by dborione         ###   ########.fr       */
+/*   Updated: 2022/10/26 10:16:34 by dborione         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,17 @@
 
 int	ft_lstsize(t_list *lst)
 {
+	t_list	*tmp;
 	int	i;
-	t_list	*trav;
 
-	trav = lst;
+	tmp = lst;
 	i = 0;
 	if (!lst)
 		return (0);
-	while (trav)
+	while (tmp)
 	{
-		trav = trav->next;
+		tmp = tmp->next;
 		i++;
 	}
 	return (i);
 }
-
-/*int	main(void)
-{
-	void	*ptr = NULL;
-	ft_lstnew(ptr);
-	return (0);
-}*/

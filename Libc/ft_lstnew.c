@@ -6,7 +6,7 @@
 /*   By: dborione <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 11:42:57 by dborione          #+#    #+#             */
-/*   Updated: 2022/10/25 12:08:38 by dborione         ###   ########.fr       */
+/*   Updated: 2022/10/26 10:07:55 by dborione         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 t_list	*ft_lstnew(void *content)
 {
-	t_list	*new_list;
+	t_list	*new_node;
 
-	new_list = malloc(sizeof(*new_list));
-	if (!new_list)
+	new_node = malloc(sizeof(*new_node));
+	if (!new_node)
 		return (0);
-	new_list->content = content;
-	new_list->next = NULL;
-	return (new_list);
+	new_node->content = content;
+	new_node->next = NULL;
+	return (new_node);
 }
 
 /*int	main(void)
