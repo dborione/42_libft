@@ -6,7 +6,7 @@
 /*   By: dborione <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 12:54:41 by dborione          #+#    #+#             */
-/*   Updated: 2022/10/26 12:54:49 by dborione         ###   ########.fr       */
+/*   Updated: 2022/10/26 13:03:26 by dborione         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 			ft_lstclear(&new_lst, del);
 			return (NULL);
 		}
-		tmp->content = f(tmp->content);
-		ft_lstadd_back(&tmp, new_lst);
+		tmp->content = f(lst->content);
+		ft_lstadd_back(&new_lst, tmp);
 		lst = lst->next;
 	}
 	return (new_lst);
