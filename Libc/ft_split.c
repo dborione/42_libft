@@ -6,7 +6,7 @@
 /*   By: dborione <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 11:33:30 by dborione          #+#    #+#             */
-/*   Updated: 2022/10/25 16:53:15 by dborione         ###   ########.fr       */
+/*   Updated: 2022/10/26 17:29:04 by dborione         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,38 +16,23 @@
 static int	ft_tab_len(const char *ptr, char c)
 {
 	unsigned long	i;
-	int				j;
-	int				count;
 	unsigned int	len;
+	int				count;
 
 	i = 0;
-	j = 0;
-	count = 0;
 	len = ft_strlen(ptr);
+	count = 0;
 	while (i < len)
 	{
 		while (i < len && ptr[i] != c)
 		{
 			i++;
 			if (ptr[i] == c || ptr[i] == '\0')
-			{
 				count++;
-				j = i;
-			}
 		}
-		j++;
 		i++;
 	}
 	return (count);
-}
-
-static char	**ft_empty_tab(char **tab)
-{
-	tab = malloc(sizeof(*tab));
-	if (!tab)
-		return (NULL);
-	tab[0] = NULL;
-	return (tab);
 }
 
 static char	**ft_free_tab(char **tab)
@@ -104,8 +89,6 @@ char	**ft_split(const char *s, char c)
 	count = 0;
 	tab = NULL;
 	count = ft_tab_len(s, c);
-	if (count == 0)
-		return (ft_empty_tab(tab));
 	tab = malloc(sizeof(*tab) * (count + 1));
 	if (!tab)
 		return (NULL);

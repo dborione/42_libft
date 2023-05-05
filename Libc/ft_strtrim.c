@@ -6,7 +6,7 @@
 /*   By: dborione <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 17:07:34 by dborione          #+#    #+#             */
-/*   Updated: 2022/10/26 12:39:22 by dborione         ###   ########.fr       */
+/*   Updated: 2022/10/26 17:10:28 by dborione         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,18 +37,18 @@ size_t	ft_strtrim_end(char const *s1, char const *set)
 	size_t	i;
 	size_t	j;
 
-	i = ft_strlen(s1) - 1;
-	j = 0;
-	while (set[j])
+	i = 0;
+	j = ft_strlen(s1) - 1;
+	while (set[i])
 	{
-		while (s1[i] == set[j])
+		while (s1[j] == set[i])
 		{
-			j = 0;
-			i--;
+			i = 0;
+			j--;
 		}
-		j++;
+		i++;
 	}
-	return (i);
+	return (j);
 }
 
 char	*ft_strtrim(char const *s1, char const *set)

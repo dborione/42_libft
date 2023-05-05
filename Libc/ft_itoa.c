@@ -6,7 +6,7 @@
 /*   By: dborione <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 17:12:59 by dborione          #+#    #+#             */
-/*   Updated: 2022/10/26 12:42:56 by dborione         ###   ########.fr       */
+/*   Updated: 2022/10/26 16:46:28 by dborione         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,7 @@ char	*ft_itoa_pos(long nbr, char *str, int i)
 	while (i > 0)
 	{
 		str[--i] = ((nbr % 10) + '0');
-		if (nbr > 9)
-			nbr = nbr / 10;
+		nbr = nbr / 10;
 	}
 	return (str);
 }
@@ -43,13 +42,12 @@ char	*ft_itoa_pos(long nbr, char *str, int i)
 char	*ft_itoa_neg(long nbr, char *str, int i)
 {
 	str[i] = '\0';
+	str[0] = '-';
 	nbr = -nbr;
 	while (i > 1)
 	{
-		str[0] = '-';
 		str[--i] = ((nbr % 10) + '0');
-		if (nbr > 9)
-			nbr = nbr / 10;
+		nbr = nbr / 10;
 	}
 	return (str);
 }

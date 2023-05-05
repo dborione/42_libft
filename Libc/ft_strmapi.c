@@ -6,7 +6,7 @@
 /*   By: dborione <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 11:31:10 by dborione          #+#    #+#             */
-/*   Updated: 2022/10/24 10:41:20 by dborione         ###   ########.fr       */
+/*   Updated: 2022/10/26 16:48:00 by dborione         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,9 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	ptr = malloc(sizeof(*ptr) * (ft_strlen(s) + 1));
 	if (!ptr)
 		return (NULL);
-	ft_strlcpy(ptr, s, (ft_strlen(s) + 1));
-	while (ptr[i])
+	while (s[i])
 	{
-		ptr[i] = f(i, ptr[i]);
+		ptr[i] = f(i, s[i]);
 		i++;
 	}
 	ptr[i] = '\0';
