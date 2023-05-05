@@ -34,18 +34,9 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 
 /*int	main()
 {
-	char src[11] = "an exemple\0";
-	char dst[8] = "this is\0";
+	char src[11] = "ipsum\0";
+	char dst[8] = "lorem \0";
 
-	char	*src = " tripouille   xxx";
-	char	*dst;
-	dst = malloc(sizeof(*dst) * (ft_strlen(src) - (16 - 2)));
-	if (!dst)
-		return (0);
-	printf("%lu\n", ft_strlcpy(dst, &src[2], 16));
-//	printf("%lu\n", strlcpy(dst, src, sizeof(dst)));
-	printf("%s\n", src);
-	printf("%s\n", dst);
-
+	printf("%lu\n", ft_strlcpy(dst, &src[2], ft_strlen(dst)));
 	return (0);
 }*/

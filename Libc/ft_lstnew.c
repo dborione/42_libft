@@ -6,7 +6,7 @@
 /*   By: dborione <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 11:42:57 by dborione          #+#    #+#             */
-/*   Updated: 2022/10/21 12:47:49 by dborione         ###   ########.fr       */
+/*   Updated: 2022/10/25 12:08:38 by dborione         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_list	*ft_lstnew(void *content)
 {
 	t_list	*new_list;
 
-	new_list = malloc(sizeof(new_list));
+	new_list = malloc(sizeof(*new_list));
 	if (!new_list)
 		return (0);
 	new_list->content = content;

@@ -6,30 +6,30 @@
 /*   By: dborione <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 11:33:30 by dborione          #+#    #+#             */
-/*   Updated: 2022/10/25 16:53:15 by dborione         ###   ########.fr       */
+/*   Updated: 2022/10/24 14:44:24 by dborione         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <stdio.h>
+#include <stdio.h>
 #include "libft.h"
 
-static int	ft_tab_len(const char *ptr, char c)
+int	ft_tab_len(const char *s, char c)
 {
 	unsigned long	i;
-	int				j;
-	int				count;
-	unsigned int	len;
+	int	j;
+	int	count;
 
 	i = 0;
 	j = 0;
 	count = 0;
-	len = ft_strlen(ptr);
-	while (i < len)
+	if (c == '\0')
+		return (1);
+	while (i < ft_strlen(s))
 	{
-		while (i < len && ptr[i] != c)
+		while (s[i] && s[i] != c)
 		{
 			i++;
-			if (ptr[i] == c || ptr[i] == '\0')
+			if (s[i] == c)
 			{
 				count++;
 				j = i;
@@ -41,36 +41,15 @@ static int	ft_tab_len(const char *ptr, char c)
 	return (count);
 }
 
-static char	**ft_empty_tab(char **tab)
-{
-	tab = malloc(sizeof(*tab));
-	if (!tab)
-		return (NULL);
-	tab[0] = NULL;
-	return (tab);
-}
-
-static char	**ft_free_tab(char **tab)
-{
-	int	x;
-
-	x = 0;
-	while (tab[x])
-	{
-		free(tab[x]);
-		x++;
-	}
-	free(tab);
-	return (NULL);
-}
-
-static char	**ft_fill_tab(char **tab, const char *s, char c, int x)
+char	**ft_fill_tab(char *test, char **tab, char *ptr, const char *s, char c)
 {
 	size_t	i;
-	int		j;
-
+	int	j;
+	int	x;
+	
 	i = 0;
 	j = 0;
+	x = 0;
 	while (i < ft_strlen(s))
 	{
 		while (s[i] && s[i] != c)
@@ -78,9 +57,8 @@ static char	**ft_fill_tab(char **tab, const char *s, char c, int x)
 			i++;
 			if (s[i] == c || s[i] == '\0')
 			{
-				tab[x] = ft_substr(s, j, i - j);
-				if (!tab[x])
-					return (ft_free_tab(tab));
+				ptr = ft_substr(s, j, i - j);
+				tab[x] = ptr;
 				x++;
 				j = i;
 			}
@@ -88,46 +66,86 @@ static char	**ft_fill_tab(char **tab, const char *s, char c, int x)
 		j++;
 		i++;
 	}
-	tab[x] = NULL;
+	tab[x] = test;
+	return (tab);
+}
+
+int	ft_is_c_in_s(const char *s, char c)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == c)
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+char	**ft_count_zero(char *test, char **tab, const char *s, char *ptr, char c, int count)
+{
+	if (ft_is_c_in_s(s, c) == 1 && count == 0)
+	{
+		tab = malloc(sizeof(*tab));
+		if (!tab)
+			return (0);
+		tab[0] = test;
+	}
+	else
+	{
+		tab = malloc(sizeof(*tab) * 2);
+		if (!tab)
+			return (0);
+		tab[0] = ptr;
+		tab[1] = test;
+	}
 	return (tab);
 }
 
 char	**ft_split(const char *s, char c)
 {
 	char	**tab;
+	char	*ptr;
 	int		count;
-	int		x;
+	char	*test;
+	test = malloc(sizeof(*test) + 5);
+	if (!test)
+		return (0);
+	test = "NULL";
 
-	x = 0;
 	if (!s)
-		return (NULL);
-	count = 0;
+		return (0);
 	tab = NULL;
 	count = ft_tab_len(s, c);
+	ptr = ft_strdup(s);
 	if (count == 0)
-		return (ft_empty_tab(tab));
-	tab = malloc(sizeof(*tab) * (count + 1));
-	if (!tab)
-		return (NULL);
-	tab = ft_fill_tab(tab, s, c, x);
+		tab = ft_count_zero(test, tab, s, ptr, c, count);
+	else
+	{
+		count = count + 1;
+		printf("%d\n", count);
+		if (c == '\0')
+			count = 1;
+		tab = malloc(sizeof(*tab) * (count + 1));
+		if (!tab)
+			return (0);
+		tab = ft_fill_tab(test, tab, ptr, s, c);
+	}
 	return (tab);
 }
 
-/*int	main()
+int	main()
 {
-	const char *s = " Tripouille";
+	const char *s = "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse";
 	char **tab = ft_split(s, ' ');
 	if (!s)
 	{
-		//free(tab);	
+		free(tab);	
 		return (0);
 	}
-	if (tab[1] == NULL)
-		printf("ok");
-	printf("%s\n", tab[0]);
-	printf("%zu\n", ft_strlen("Tripouille"));
-	printf("%zu\n", ft_strlen(tab[0]));
-
+	
 	unsigned long 	i = 0;
 	int		j = 0;
 //	printf("%lu\n", sizeof(tab[50]));
@@ -145,4 +163,4 @@ char	**ft_split(const char *s, char c)
 	}
 	//printf("%s\n", tab[i + 1]);
 	return (0);
-}*/
+}

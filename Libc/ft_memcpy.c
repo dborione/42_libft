@@ -6,7 +6,7 @@
 /*   By: dborione <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 10:27:20 by dborione          #+#    #+#             */
-/*   Updated: 2022/10/10 14:54:16 by dborione         ###   ########.fr       */
+/*   Updated: 2022/10/24 17:50:03 by dborione         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,17 @@
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	size_t			i;
-	unsigned char	*dest2;
+	size_t		i;
+	unsigned char		*dest2;
 	unsigned char	*src2;
 
+	if (!dest && !src)
+		return (0);
 	i = 0;
 	dest2 = (unsigned char *)dest;
 	src2 = (unsigned char *)src;
-	if (dest2 == (void *)0 && src2 == (void *)0 && n != 0)
-		return (0);
+	if (dest == src)
+		return (dest2);
 	while (i < n)
 	{
 		dest2[i] = src2[i];
@@ -35,15 +37,11 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 
 /*int		main()
 {
-	char	src1[]= "exemple hfghfg hfgh";
-	char	dest1[20]= "\0";
-//	char	str2[]= "exemple";
-//	char	dest2[20];
+	char	*src = "fds";
+	char	*dest = src;
 
-//	memcpy(NULL, NULL, 3);
-//	printf("%s\n", dest1);
-	ft_memcpy(dest1, src1, sizeof(dest1));
-	printf("%s\n", dest1);
+	ft_memcpy(dest, src, 11);
+	printf("%s\n", dest);
 
 	return(0);
 }*/

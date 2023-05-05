@@ -18,21 +18,20 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	char		*s3;
 	size_t		buff;
 
-	if (s2 == NULL || s1 == NULL)
-		return (0);
+	if (!s2 || !s1)
+		return (NULL);
 	buff = ft_strlen(s1) + ft_strlen(s2) + 1;
 	s3 = malloc (sizeof(char) * buff);
-	if (s3 == NULL)
-		return (0);
-	s3 = ft_memcpy(s3, s1, (ft_strlen(s1) + 1));
-	ft_strlcat((char *)s3, (char *)s2, buff);
+	if (!s3)
+		return (NULL);
+	ft_strlcpy(s3, s1, (ft_strlen(s1) + 1));
+	ft_strlcat(s3, s2, buff);
 	return (s3);
 }
 
 /*int	main()
 {
 	char s1[] = "42";
-//	char s2[] = "";
 
 	printf("%s\n", ft_strjoin(NULL, s1));
 	return (0);

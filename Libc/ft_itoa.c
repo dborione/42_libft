@@ -13,7 +13,7 @@
 //#include <stdio.h>
 #include "libft.h"
 
-int	ft_getdigits_nbr(long nbr)
+int	ft_count_digits(long nbr)
 {
 	int	i;
 
@@ -56,26 +56,24 @@ char	*ft_itoa_neg(long nbr, char *str, int i)
 
 char	*ft_itoa(int nbr)
 {
+	int	i;
 	char	*str;
-	int		i;
-	long	nbr2;
 
-	nbr2 = nbr;
-	i = ft_getdigits_nbr(nbr2);
-	if (nbr2 < 0)
+	i = ft_count_digits(nbr);
+	if (nbr < 0)
 	{
 		i++;
 		str = malloc(sizeof(*str) * (i + 1));
 		if (!str)
 			return (0);
-		str = ft_itoa_neg(nbr2, str, i);
+		str = ft_itoa_neg(nbr, str, i);
 	}
 	else
 	{
 		str = malloc(sizeof(*str) * (i + 1));
 		if (!str)
 			return (0);
-		str = ft_itoa_pos(nbr2, str, i);
+		str = ft_itoa_pos(nbr, str, i);
 	}
 	return (str);
 }

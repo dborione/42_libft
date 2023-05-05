@@ -6,39 +6,47 @@
 /*   By: dborione <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 11:31:10 by dborione          #+#    #+#             */
-/*   Updated: 2022/10/17 11:18:57 by dborione         ###   ########.fr       */
+/*   Updated: 2022/10/24 10:41:20 by dborione         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*#include <stdio.h>
+//#include <stdio.h>
+#include "libft.h"
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
 	unsigned int	i;
+	char			*ptr;
 
+	if (!s || !f)
+		return (NULL);
 	i = 0;
-	s = malloc(sizeof(s) * i);
-	if (!s)
+	ptr = malloc(sizeof(*ptr) * (ft_strlen(s) + 1));
+	if (!ptr)
+		return (NULL);
+	ft_strlcpy(ptr, s, (ft_strlen(s) + 1));
+	while (ptr[i])
 	{
-		free(s);
-		return (0);
-	}
-	while (s[i])
-	{
-		s[i] = f(i, s[i]);
+		ptr[i] = f(i, ptr[i]);
 		i++;
 	}
-	s[i] = '\0';
-	return (s);
+	ptr[i] = '\0';
+	return (ptr);
 }
 
-char f (unsigned int, char)
-{	
-
+/*char	test(unsigned int i, char c)
+{
+	while (i < 3)
+	{
+		c = 'f';
+		i++;
+	}
+	return (c);
 }
 
 int	main()
 {
-	printf("%s\n", ft_strmapi(f(2, 'a'));
+	char s[] = "lol";
+	printf("%s", ft_strmapi(s, test));
 	return (0);
 }*/

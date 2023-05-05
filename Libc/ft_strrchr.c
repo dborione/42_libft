@@ -19,13 +19,13 @@ char	*ft_strrchr(char *str, int c)
 	int		len;
 
 	len = ft_strlen(str);
-	while (len != -1)
+	while (len > -1)
 	{
-		if (str[len] == (unsigned char)c)
+		if (str[len] == (char)c)
 			return (&str[len]);
 		len--;
 	}
-	return (0);
+	return (NULL);
 }
 
 /*int	main()
