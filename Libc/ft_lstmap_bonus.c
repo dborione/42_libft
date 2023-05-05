@@ -1,45 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dborione <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/10 16:34:04 by dborione          #+#    #+#             */
-/*   Updated: 2022/10/26 12:39:11 by dborione         ###   ########.fr       */
+/*   Created: 2022/10/26 12:54:41 by dborione          #+#    #+#             */
+/*   Updated: 2022/10/26 13:03:26 by dborione         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <stdlib.h>
-//#include <stdio.h>
-//#include <string.h>
 #include "libft.h"
 
-char	*ft_strdup(const char *s1)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	char	*s2;
-	int		i;
+	t_list	*tmp;
+	t_list	*new_lst;
 
-	i = 0;
-	s2 = malloc(sizeof(*s2) * (ft_strlen(s1) + 1));
-	if (!s2)
-		return (0);
-	while (s1[i])
+	new_lst = NULL;
+	if (!lst || !f || !del)
+		return (NULL);
+	while (lst)
 	{
-		s2[i] = s1[i];
-		i++;
+		tmp = ft_lstnew(NULL);
+		if (!tmp)
+		{
+			ft_lstclear(&new_lst, del);
+			return (NULL);
+		}
+		tmp->content = f(lst->content);
+		ft_lstadd_back(&new_lst, tmp);
+		lst = lst->next;
 	}
-	s2[i] = '\0';
-	return (s2);
+	return (new_lst);
 }
-
-/*int	main()
-{
-	char src1[11] = "an exemple\0";
-	char src2[11] = "an exemple\0";
-
-	printf("%s\n", ft_strdup(src1));
-	printf("%s\n", strdup(src2));
-
-	return (0);
-}*/

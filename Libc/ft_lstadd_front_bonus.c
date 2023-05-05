@@ -1,47 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd_front_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dborione <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/10 10:27:20 by dborione          #+#    #+#             */
-/*   Updated: 2022/10/26 12:38:52 by dborione         ###   ########.fr       */
+/*   Created: 2022/10/26 12:53:02 by dborione          #+#    #+#             */
+/*   Updated: 2022/10/26 12:53:04 by dborione         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //#include <stdio.h>
-//#include <string.h>
 #include "libft.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	size_t			i;
-	unsigned char	*dest2;
-	unsigned char	*src2;
-
-	if (!dest && !src)
-		return (0);
-	i = 0;
-	dest2 = (unsigned char *)dest;
-	src2 = (unsigned char *)src;
-	if (dest == src)
-		return (dest2);
-	while (i < n)
+	if (lst && new)
 	{
-		dest2[i] = src2[i];
-		i++;
+		new->next = *lst;
+		*lst = new;
 	}
-	return (dest2);
 }
 
-/*int		main()
+/*int	main()
 {
-	char	*src = "fds";
-	char	*dest = src;
+	t_list	*lst;
+	t_list	*new_node;
 
-	ft_memcpy(dest, src, 11);
-	printf("%s\n", dest);
-
-	return(0);
+	lst = ft_lstnew("ex");
+	new_node = ft_lstnew("lol");
+	ft_lstadd_front(&lst, new_node);
+	printf("%s\n", lst->content);
+	return (0);
 }*/

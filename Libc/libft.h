@@ -6,18 +6,16 @@
 /*   By: dborione <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 13:47:55 by dborione          #+#    #+#             */
-/*   Updated: 2022/10/25 17:27:01 by dborione         ###   ########.fr       */
+/*   Updated: 2022/10/26 15:41:34 by dborione         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include <string.h>
-# include <stddef.h>
-# include <limits.h>
+# include <stdlib.h>
 # include <unistd.h>
-//typedef unsigned long size_t;
+
 typedef struct s_list
 {
 	void			*content;
@@ -30,7 +28,6 @@ int		ft_isdigit(int c);
 int		ft_isalnum(int c);
 int		ft_isascii(int c);
 int		ft_isprint(int c);
-void	*malloc(size_t size);
 void	free(void *ptr);
 void	*ft_calloc(size_t count, size_t size);
 char	*ft_strdup(const char *s1);

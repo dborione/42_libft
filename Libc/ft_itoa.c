@@ -6,7 +6,7 @@
 /*   By: dborione <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 17:12:59 by dborione          #+#    #+#             */
-/*   Updated: 2022/10/20 17:12:54 by dborione         ###   ########.fr       */
+/*   Updated: 2022/10/26 12:42:56 by dborione         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ char	*ft_itoa_neg(long nbr, char *str, int i)
 
 char	*ft_itoa(int nbr)
 {
-	int	i;
+	int		i;
 	char	*str;
 
 	i = ft_count_digits(nbr);

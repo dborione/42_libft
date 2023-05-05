@@ -6,7 +6,7 @@
 /*   By: dborione <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 17:07:34 by dborione          #+#    #+#             */
-/*   Updated: 2022/10/20 16:47:42 by dborione         ###   ########.fr       */
+/*   Updated: 2022/10/26 12:39:22 by dborione         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 {
 	size_t	i;
 	size_t	j;
-	char			*s2;
+	char	*s2;
 
 	if (!s1 || !set)
 		return (NULL);

@@ -1,25 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dborione <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/25 11:04:21 by dborione          #+#    #+#             */
-/*   Updated: 2022/10/25 17:31:41 by dborione         ###   ########.fr       */
+/*   Created: 2022/10/26 12:52:27 by dborione          #+#    #+#             */
+/*   Updated: 2022/10/26 12:52:53 by dborione         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+//#include <stdio.h>
 #include "libft.h"
 
-void	ft_lstdelone(t_list *lst, void (*del)(void *))
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
 	t_list	*tmp;
 
-	tmp = lst;
-	if (tmp && del)
+	if (!lst)
+		return ;
+	if (!*lst)
+		*lst = new;
+	else if (lst)
 	{
-		del(tmp->content);
-		free(tmp);
+		tmp = ft_lstlast(*lst);
+		tmp->next = new;
 	}
 }
+
+/*int	main(void)
+{
+	t_list	*lst;
+	t_list	*new;
+	t_list	*tmp;
+
+	lst = ft_lstnew("ex");
+	new = ft_lstnew("lol");
+	ft_lstadd_back(&lst, new);
+	if (new)
+	{
+		tmp = lst;
+		tmp = tmp->next;
+		printf("%s\n", tmp->content);
+	}
+	return (0);
+}*/

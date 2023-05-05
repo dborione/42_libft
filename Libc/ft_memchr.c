@@ -6,7 +6,7 @@
 /*   By: dborione <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 11:20:17 by dborione          #+#    #+#             */
-/*   Updated: 2022/10/10 12:24:22 by dborione         ###   ########.fr       */
+/*   Updated: 2022/10/26 12:45:27 by dborione         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {
-	size_t	i;
+	size_t			i;
 	unsigned char	c2;
 	unsigned char	*s2;
 
@@ -34,7 +34,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 
 /*int	main()
 {
-	char *str = "bonjourno";
+	char *str = "lorem";
 	int	c = 's';
 
 	printf("%s\n", memchr(str, c, 7));
